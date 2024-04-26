@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import Primary from "../assets/images/spacer.png";
+import Secondary from "../assets/images/spacer2.png";
+
+interface Props {
+  type?: "primary" | "secondary";
+}
+
+const { type } = Astro.props;
+
+const bgc = {
+  primary: Primary,
+  secondary: Secondary,
+};
+---
+
+<div class="max-h-64 overflow-hidden">
+  <Image
+    src={bgc[type || 'primary']}
+    alt=""
+    class="min-h-full min-w-full object-cover"
+  />
+</div>

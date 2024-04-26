@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import Customer from "../assets/images/customer.png";
+
+const {  name, role, review } = Astro.props;
+---
+
+<article class="max-w-80">
+  <div class="flex flex-row items-center pb-6">
+    <Image src={Customer} alt="" />
+    <div class="pl-3">
+      <p class="font-archivo-black text-2xl font-black">{name}</p>
+      <p class="text-base">{role}</p>
+    </div>
+  </div>
+  <p class="text-xl italic">
+    <span>"</span>
+    {review}
+    <span>"</span>
+  </p>
+</article>

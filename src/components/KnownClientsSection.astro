@@ -1,0 +1,38 @@
+---
+import KnownClientCard from "../components/KnownClientCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const clients = [
+  {
+    name: "Mark <br/> Puncher",
+    role: "Proffesional boxer",
+    record: "24-0-1",
+  },
+  {
+    name: "Mark <br/> Puncher",
+    role: "Proffesional boxer",
+    record: "24-0-1",
+  },
+  {
+    name: "Mark <br/> Puncher",
+    role: "Proffesional boxer",
+    record: "24-0-1",
+  },
+];
+---
+
+<section class="container mx-auto py-16">
+  <SectionHeader text="We work <br/> with" />
+
+  <div class="flex justify-between pt-14">
+    {
+      clients.map((testimonial) => (
+        <KnownClientCard
+          name={testimonial.name}
+          role={testimonial.role}
+          record={testimonial.record}
+        />
+      ))
+    }
+  </div>
+</section>

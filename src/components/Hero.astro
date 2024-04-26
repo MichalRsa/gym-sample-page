@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import CustomPicture from "../components/CustomPicture.astro";
+import LinkButton from "./LinkButton.astro";
+import heroBackground from "../assets/images/heroBackground.png";
+import heroBackgroundMobile from "../assets/images/heroBackgroundMobile.png";
+---
+
+<div class="relative overflow-hidden max-lg:h-[90vh] lg:-top-2">
+  <div class="w-full bg-neutral-800 max-lg:h-14 lg:hidden"></div>
+  <CustomPicture
+    alt=""
+    desktopImgUrl={heroBackground}
+    mobileImgUrl={heroBackgroundMobile}
+    styles="absolute object-cover max-lg:h-full min-w-full lg:min-h-full lg:object-right"
+  />
+  <section class="container mx-auto">
+    <div
+      class="flex flex-col items-center gap-4 pb-44 max-lg:text-center lg:relative lg:items-start lg:pt-16"
+    >
+      <h1
+        class="text-normal text-5xl text-white max-lg:-translate-y-[26%] lg:text-9xl lg:leading-[120px]"
+      >
+        Find Your<br /> Power
+      </h1>
+
+      <div
+        class="max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:-translate-x-1/2 max-lg:-translate-y-1/2"
+      >
+        <p class="max-w-xl text-lg text-white max-lg:w-[30ch] lg:text-4xl">
+          Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
+          Goals.
+        </p>
+
+        <LinkButton text="Book Appointment" link="/" />
+      </div>
+    </div>
+  </section>
+</div>

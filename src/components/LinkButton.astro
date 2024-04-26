@@ -1,0 +1,19 @@
+---
+interface Props {
+  link: string;
+  text: string;
+  type?: "primary" | "secondary";
+}
+const { link, text, type } = Astro.props;
+
+const styles = {
+  primary: " bg-yellow-300 text-black",
+  secondary: "text-white border border-yellow-300",
+};
+
+const style = type ? styles[type] : styles.primary;
+---
+
+<a href={link} class="inline-block">
+  <p class:list={["rounded-xl px-8 py-3", style]}>{text}</p>
+</a>

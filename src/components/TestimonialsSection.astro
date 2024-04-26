@@ -1,0 +1,35 @@
+---
+import TestimonialCard from "../components/TestimonialCard.astro";
+import SectionHeader from "../components/SectionHeader.astro"
+
+const testimonials = [
+  {
+    name: "Karen Smith",
+    role: "Proffesional Someone",
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
+  },
+  {
+    name: "Karen Smith",
+    role: "Proffesional Someone",
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
+  },
+  {
+    name: "Karen Smith",
+    role: "Proffesional Someone",
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
+  },
+];
+---
+
+<section class="py-16 container mx-auto">
+  <!-- <h2>Good words about us</h2> -->
+  <SectionHeader text="Good words <br/> about us" />
+<div class="flex justify-between pt-14">
+{testimonials.map(testimonial => 
+  <TestimonialCard name={testimonial.name} role={testimonial.role} review={testimonial.review}/>
+)}
+</div>
+</section>

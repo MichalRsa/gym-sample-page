@@ -1,0 +1,35 @@
+---
+import TeamMemberCard from "../components/TeamMemberCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const members = [
+  {
+    name: "George <br/> Surname",
+    role: "Boxing",
+  },
+  {
+    name: "George <br/> Surname",
+    role: "Boxing",
+  },
+  {
+    name: "George <br/> Surname",
+    role: "Boxing",
+  },
+];
+---
+
+<section class="container mx-auto py-16">
+  <SectionHeader text="Meet our <br/> team" />
+  <p class="mx-auto max-w-[510px] pt-5 text-4xl">
+    Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
+    Goals.
+  </p>
+
+  <div class="flex justify-between pt-14">
+    {
+      members.map((member) => (
+        <TeamMemberCard name={member.name} role={member.role} />
+      ))
+    }
+  </div>
+</section>

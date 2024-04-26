@@ -1,0 +1,57 @@
+---
+const props = Astro.props;
+---
+
+<faq-card>
+  <div
+    class="shadow-lg shadow-gray-100 focus-within:ring-yellow-500 hover:bg-yellow-100 mb-8 rounded-xl border-4 border-yellow-300 focus-within:ring"
+  >
+    <button
+      data-faq-button
+      class="flex w-full items-center justify-between p-2 focus:outline-none md:p-4 md:text-2xl"
+    >
+      <span class="text-left">{props.question}</span>
+      <div class="h-6 min-w-[24px] flex-grow-0 transition-all">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width={2}
+            d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </button>
+    <div data-faq-accordion class="grid transition-all">
+      <div class="overflow-hidden">
+        <p class="p-4 text-xl">{props.answer}</p>
+      </div>
+    </div>
+  </div>
+</faq-card>
+
+<script>
+  class Accordion extends HTMLElement {
+    constructor() {
+      super();
+
+      let isOpen = false;
+
+      const button = this.querySelector<HTMLElement>("[data-faq-button]");
+      const accordion = this.querySelector<HTMLElement>("[data-faq-accordion]");
+
+      if (accordion == null) return;
+
+      accordion.style.gridTemplateRows = "0fr";
+
+      const toggleAccordion = () => {
+        isOpen = !isOpen;
+
+        accordion.style.gridTemplateRows = isOpen ? "1fr" : "0fr";
+      };
+
+      button?.addEventListener("click", toggleAccordion);
+    }
+  }
+
+  customElements.define("faq-card", Accordion);
+</script>

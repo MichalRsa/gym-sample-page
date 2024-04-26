@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import TeamMember from "../assets/images/team-member.png";
+import LinkButton from "./LinkButton.astro";
+
+const { name, role } = Astro.props;
+---
+
+<div class="max-h-[620px] max-w-[410] overflow-hidden rounded-3xl">
+  <Image
+    src={TeamMember}
+    alt=""
+    class="relative -z-10 min-h-full min-w-full object-cover"
+  />
+  <article class="-translate-y-full rounded-3xl bg-neutral-800 p-7">
+    <p class="text-white">
+      {role}
+      <p
+        class="mb-3 font-archivo-black text-5xl font-black text-white"
+        set:html={name}
+      />
+      <LinkButton link="/" text="Learn More" type="secondary" />
+    </p>
+  </article>
+</div>

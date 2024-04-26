@@ -1,0 +1,50 @@
+---
+import OfferCard from "../components/OfferCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const offer = [
+  {
+    name: "Get Stronger",
+    role: "Powerlifting"
+    ,
+    link:
+      "/",
+  },
+  {
+    name: "Fix the pain",
+    role: "Physiotherapy"
+    ,
+    link:
+      "/",
+  },
+  {
+    name: "Get back in shape after injury",
+    role: "Physiotherapy"
+    ,
+    link:
+      "/",
+  },
+  {
+    name: "Lose weight",
+    role: "Personal session"
+    ,
+    link:
+      "/",
+  },
+];
+---
+
+<section class="container mx-auto py-16">
+  <SectionHeader text="What are your <br/> goals?" />
+
+  {
+    offer.map((offerItem) => (
+      <OfferCard
+        name={offerItem.name}
+        role={offerItem.role}
+        review={offerItem.link}
+      />
+    ))
+  }
+  <a href="">See all classes</a>
+</section>

@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import LinkButton from "./LinkButton.astro";
+import Map from "../assets/images/map.png";
+---
+
+<section class="container mx-auto py-16">
+  <div class="flex flex-row justify-between">
+    <div class="flex basis-1/2 flex-col justify-between text-xl">
+      <h2 class="font-archivo-black text-8xl font-black">Find us</h2>
+      <p>ul. Beautiful Street 105, City</p>
+      <div>
+        <p>Parking</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. At sit quis amet vitae
+          venenatis tincidunt dui neque id. Dictumst integer iaculis augue arcu
+          cras egestas.
+        </p>
+      </div>
+      <div>
+        <LinkButton link="/" text="Open in Google Maps" />
+      </div>
+    </div>
+    <div class="max-w-96 basis-1/2">
+      <Image
+        src={Map}
+        alt=""
+        class="relative -z-10 min-h-full min-w-full object-cover"
+      />
+    </div>
+  </div>
+</section>
