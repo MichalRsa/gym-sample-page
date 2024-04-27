@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import CustomPicture from "../components/CustomPicture.astro";
 import LinkButton from "./LinkButton.astro";
 import heroBackground from "../assets/images/heroBackground.png";
@@ -25,14 +24,14 @@ import heroBackgroundMobile from "../assets/images/heroBackgroundMobile.png";
       </h1>
 
       <div
-        class="max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:-translate-x-1/2 max-lg:-translate-y-1/2"
+        class="max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:-translate-x-1/2 max-lg:translate-y-12 "
       >
-        <p class="max-w-xl text-lg text-white max-lg:w-[30ch] lg:text-4xl">
+        <p class="max-w-xl text-lg text-white max-lg:w-[30ch] lg:text-4xl max-lg:bg-neutral-200/30 max-lg:rounded-xl mb-3 backdrop-blur-sm">
           Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
           Goals.
         </p>
 
-        <LinkButton text="Book Appointment" link="/" />
+        <LinkButton text="Book Appointment" link="/" type="secondary"/>
       </div>
     </div>
   </section>

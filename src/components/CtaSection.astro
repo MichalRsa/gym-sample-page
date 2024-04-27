@@ -3,10 +3,10 @@ import SectionHeader from "./SectionHeader.astro";
 import LinkButton from "./LinkButton.astro";
 ---
 
-<section class="container mx-auto py-16">
-  <h3 class="text-center">Would you like to work with us?</h3>
+<section class="container mx-auto py-16 overflow-hidden">
+  <h3 class="max-lg:text-xl text-center">Would you like to work with us?</h3>
   <SectionHeader text="Book a first session <br/> for free" />
-  <div class="text-4xl flex justify-center gap-16 pt-14">
+  <div class="text-xl max-sm:gap-4 lg:text-4xl max-sm:flex-col max-sm:items-center flex lg:justify-center justify-around lg:gap-16 pt-14">
     <LinkButton text="Book a session" link="/" />
     <LinkButton text="Contact us" link="/" type="secondary" />
   </div>

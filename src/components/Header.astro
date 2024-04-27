@@ -1,18 +1,58 @@
 ---
 import LinkButton from "./LinkButton.astro";
+
+import Hamburger from "./Hamburger.astro";
 ---
 
-<header class="bg-neutral-900">
-  <div class="container mx-auto flex items-center justify-between p-6">
-    <h2 class="from-neutral-700 text-3xl text-white">
-      <a href="/">PowerHouse</a>
-    </h2>
-    <nav class="flex list-none items-center gap-8 text-white">
-      <li><a href="">Offer</a></li>
-      <li><a href="">Contact</a></li>
-      <li><a href="">About</a></li>
-      <li><a href="">Team</a></li>
-      <li><LinkButton link="/" text="Book Appointment" /></li>
+<header class="relative flex justify-center bg-neutral-900">
+  <div class="container flex items-center justify-between p-6 max-lg:flex-col">
+    <div
+      class="relative z-30 flex w-full justify-between max-lg:px-4 max-lg:py-1"
+    >
+      <h2 class="from-neutral-700 text-3xl text-white">
+        <a href="/">PowerHouse</a>
+      </h2>
+      <div class="flex items-center lg:hidden">
+        <Hamburger />
+      </div>
+    </div>
+    <div
+      class="absolute left-0 top-0 z-20 h-full w-full bg-neutral-900 lg:hidden"
+    >
+    </div>
+    <nav
+      class="z-10 max-lg:bg-neutral-800/60 text-white backdrop-blur-xl transition-transform duration-500 max-lg:absolute max-lg:bottom-0 max-lg:w-full max-lg:data-[visible=true]:translate-y-[100%]"
+      data-id="nav"
+      data-visible="false"
+    >
+      <ul class="flex items-center py-8 text-base max-lg:flex-col lg:space-x-8">
+        <li class="text-nowrap pb-4"><a href="">Offer</a></li>
+        <li class="text-nowrap pb-4"><a href="">Contact</a></li>
+        <li class="text-nowrap pb-4"><a href="">About</a></li>
+        <li class="text-nowrap pb-4"><a href="">Team</a></li>
+        <li class="text-nowrap pb-4">
+          <LinkButton link="/" text="Book Appointment" />
+        </li>
+      </ul>
     </nav>
   </div>
 </header>
+
+<script>
+  const button = document.querySelector("[data-id='hamburger']");
+  const nav = document.querySelector("[data-id='nav']");
+
+  const toggleMenu = () => {
+    const isVisible = button?.getAttribute("data-visible");
+
+    if (isVisible === "true") {
+      button?.setAttribute("data-visible", "false");
+      nav?.setAttribute("data-visible", "false");
+    } else if (isVisible === "false") {
+      button?.setAttribute("data-visible", "true");
+      nav?.setAttribute("data-visible", "true");
+    }
+  };
+
+  button?.addEventListener("click", toggleMenu);
+</script>

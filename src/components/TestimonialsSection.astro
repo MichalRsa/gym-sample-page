@@ -24,10 +24,10 @@ const testimonials = [
 ];
 ---
 
-<section class="py-16 container mx-auto">
+<section class="py-16 container mx-auto overflow-hidden">
   <!-- <h2>Good words about us</h2> -->
   <SectionHeader text="Good words <br/> about us" />
-<div class="flex justify-between pt-14">
+<div class="flex justify-between pt-14 max-lg:overflow-x-scroll gap-16">
 {testimonials.map(testimonial => 
   <TestimonialCard name={testimonial.name} role={testimonial.role} review={testimonial.review}/>
 )}
