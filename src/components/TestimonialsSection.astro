@@ -1,6 +1,6 @@
 ---
 import TestimonialCard from "../components/TestimonialCard.astro";
-import SectionHeader from "../components/SectionHeader.astro"
+import SectionHeader from "../components/SectionHeader.astro";
 
 const testimonials = [
   {
@@ -24,12 +24,19 @@ const testimonials = [
 ];
 ---
 
-<section class="py-16 container mx-auto overflow-hidden">
-  <!-- <h2>Good words about us</h2> -->
+<section class="container mx-auto overflow-hidden py-16">
   <SectionHeader text="Good words <br/> about us" />
-<div class="flex justify-between pt-14 max-lg:overflow-x-scroll gap-16">
-{testimonials.map(testimonial => 
-  <TestimonialCard name={testimonial.name} role={testimonial.role} review={testimonial.review}/>
-)}
-</div>
+  <div
+    class="flex justify-between gap-16 pt-14 max-lg:-mx-4 max-lg:overflow-x-scroll max-lg:px-4"
+  >
+    {
+      testimonials.map((testimonial) => (
+        <TestimonialCard
+          name={testimonial.name}
+          role={testimonial.role}
+          review={testimonial.review}
+        />
+      ))
+    }
+  </div>
 </section>

@@ -1,10 +1,18 @@
 ---
-const { img, name, role, link} = Astro.props;
+import { Image } from "astro:assets";
+
+const { img, name, role, link, width, height } = Astro.props;
+console.log(img, width,height);
+
+const widthClass = `w-[${width}px]`
+const heightClass= `h-[${height}px]`
 ---
 
-<article>
-  <img src={img} alt="" />
-  <p>{name}</p>
-  <p>{role}</p>
-  <a href="">{link}</a>
+<article class={`relative grid gap-4 ${widthClass} ${heightClass} w-[640px]`}>
+  <Image src={img} alt="" width={width} height={height} class="object-cover" />
+  <div class="absolute bottom-0 left-0 w-full h-full">
+    <p>{name}</p>
+    <p>{role}</p>
+    <a href="">{link}</a>
+  </div>
 </article>
