@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
 import OfferCard from "../components/OfferCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import Powerlifting from "../assets/images/powerlifting.png";
 import Physiotherapy from "../assets/images/physiotherapy.png";
 import Physiotherapy2 from "../assets/images/physiotherapy2.png";
 import PersonalSession from "../assets/images/personal-session.png";
+import LinkButton from "./LinkButton.astro";
 
 const offer = [
   {
@@ -47,19 +47,17 @@ const offer = [
 <section class="container mx-auto py-16">
   <SectionHeader text="What are your <br/> goals?" />
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid gap-4 py-16 lg:grid-cols-2">
     <div class="grid gap-4">
       {
         offer
           .slice(0, 2)
-          .map((offerItem) => (
+          .map((offerItem, index) => (
             <OfferCard
+              index={index + 1}
               img={offerItem.img}
               name={offerItem.name}
               role={offerItem.role}
-              review={offerItem.link}
-              width={offerItem.width}
-              height={offerItem.height}
             />
           ))
       }
@@ -68,63 +66,18 @@ const offer = [
       {
         offer
           .slice(2)
-          .map((offerItem) => (
+          .map((offerItem, index) => (
             <OfferCard
+              index={index}
               img={offerItem.img}
               name={offerItem.name}
               role={offerItem.role}
-              review={offerItem.link}
-              width={offerItem.width}
-              height={offerItem.height}
             />
           ))
       }
     </div>
   </div>
-  <a href="">See all classes</a>
-
-  <div class="grid grid-cols-2 gap-4">
-    <div class="grid gap-4">
-      <div>
-        <Image class="h-auto max-w-full rounded-lg" src={Powerlifting} alt="" />
-      </div>
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="grid gap-4">
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          class="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
-          alt=""
-        />
-      </div>
-    </div>
+  <div class="text-center text-3xl">
+    <LinkButton link="" text="See All Classes" />
   </div>
 </section>

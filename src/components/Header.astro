@@ -21,16 +21,18 @@ import Hamburger from "./Hamburger.astro";
     >
     </div>
     <nav
-      class="z-10 max-lg:bg-neutral-800/60 text-white backdrop-blur-xl transition-transform duration-500 max-lg:absolute max-lg:bottom-0 max-lg:w-full max-lg:data-[visible=true]:translate-y-[100%]"
+      class="z-10 text-white backdrop-blur-xl transition-transform duration-500 max-lg:absolute max-lg:bottom-0 max-lg:w-full max-lg:bg-neutral-800/60 max-lg:data-[visible=true]:translate-y-[100%]"
       data-id="nav"
       data-visible="false"
     >
-      <ul class="flex items-center py-8 text-base max-lg:flex-col lg:space-x-8">
-        <li class="text-nowrap pb-4"><a href="">Offer</a></li>
-        <li class="text-nowrap pb-4"><a href="">Contact</a></li>
-        <li class="text-nowrap pb-4"><a href="">About</a></li>
-        <li class="text-nowrap pb-4"><a href="">Team</a></li>
-        <li class="text-nowrap pb-4">
+      <ul
+        class="flex items-center text-base max-lg:flex-col max-lg:py-8 lg:space-x-8"
+      >
+        <li class="text-nowrap max-lg:pb-4"><a href="">Offer</a></li>
+        <li class="text-nowrap max-lg:pb-4"><a href="">Contact</a></li>
+        <li class="text-nowrap max-lg:pb-4"><a href="">About</a></li>
+        <li class="text-nowrap max-lg:pb-4"><a href="">Team</a></li>
+        <li class="text-nowrap max-lg:pb-4">
           <LinkButton link="/" text="Book Appointment" />
         </li>
       </ul>
