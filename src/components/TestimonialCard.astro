@@ -2,18 +2,23 @@
 import { Image } from "astro:assets";
 import Customer from "../assets/images/customer.png";
 
-const {  name, role, review } = Astro.props;
+const { name, role, review } = Astro.props;
 ---
 
-<article class="max-w-80 min-w-56 max-sm:w-9/12">
+<article class="min-w-56 max-w-80 max-sm:w-9/12">
   <div class="flex flex-row items-center pb-6">
-    <Image src={Customer} alt="" />
+    <Image
+      src={Customer}
+      alt=""
+      widths={[80, 120]}
+      sizes={`(max-width: 1024px) 80px, 120px`}
+    />
     <div class="pl-3">
-      <p class="font-archivo-black text-2xl font-black">{name}</p>
-      <p class="text-base">{role}</p>
+      <p class="font-archivo-black text-xl lg:text-2xl font-black">{name}</p>
+      <p class="text-sm lg:text-base ">{role}</p>
     </div>
   </div>
-  <p class="text-xl italic">
+  <p class="text-base lg:text-xl italic">
     <span>"</span>
     {review}
     <span>"</span>
