@@ -21,10 +21,15 @@ const clients = [
 ];
 ---
 
-<section class="container mx-auto py-16">
+<div 
+  id="our-clients"
+  >
+<section
+  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+>
   <SectionHeader text="We work <br/> with" />
 
-  <div class="flex items-center justify-center pt-14 max-lg:flex-col gap-8">
+  <div class="flex items-center justify-center gap-8 pt-14 max-lg:flex-col">
     {
       clients.map((testimonial) => (
         <KnownClientCard
@@ -36,3 +41,4 @@ const clients = [
     }
   </div>
 </section>
+</div>

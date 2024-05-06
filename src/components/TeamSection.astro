@@ -18,14 +18,17 @@ const members = [
 ];
 ---
 
-<section class="container mx-auto py-16">
+<div id="team">
+<section
+  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+>
   <SectionHeader text="Meet our <br/> team" />
   <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
     Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
     Goals.
   </p>
 
-  <div class="flex items-center justify-center pt-14 max-lg:flex-col gap-8">
+  <div class="flex items-center justify-center gap-8 pt-14 max-lg:flex-col">
     {
       members.map((member) => (
         <TeamMemberCard name={member.name} role={member.role} />
@@ -33,3 +36,4 @@ const members = [
     }
   </div>
 </section>
+</div>

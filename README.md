@@ -1,3 +1,6 @@
+# Live
+https://gym-sample-page.pages.dev/
+
 # Astro Starter Kit: Basics
 
 ```sh

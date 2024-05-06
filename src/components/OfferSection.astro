@@ -44,7 +44,10 @@ const offer = [
 ];
 ---
 
-<section class="container mx-auto py-16">
+<div id="offer">
+<section
+  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+>
   <SectionHeader text="What are your <br/> goals?" />
 
   <div class="grid gap-4 py-16 lg:grid-cols-2">
@@ -81,3 +84,4 @@ const offer = [
     <LinkButton link="" text="See All Classes" />
   </div>
 </section>
+</div>

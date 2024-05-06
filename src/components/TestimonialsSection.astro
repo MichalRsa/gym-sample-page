@@ -24,19 +24,26 @@ const testimonials = [
 ];
 ---
 
-<section class="w-full overflow-hidden py-16 lg:container lg:mx-auto">
-  <SectionHeader text="Good words <br/> about us" />
-  <div
-    class="flex gap-8 px-4 pt-14 max-lg:overflow-x-scroll lg:justify-center lg:gap-16"
+<div id="testimonials">
+  <section
+    class:list={[
+      "animationHidden animationBottom",
+      "w-full overflow-hidden py-16 lg:container lg:mx-auto",
+    ]}
   >
-    {
-      testimonials.map((testimonial) => (
-        <TestimonialCard
-          name={testimonial.name}
-          role={testimonial.role}
-          review={testimonial.review}
-        />
-      ))
-    }
-  </div>
-</section>
+    <SectionHeader text="Good words <br/> about us" />
+    <div
+      class="flex gap-8 px-4 pt-14 max-lg:overflow-x-scroll lg:justify-center lg:gap-16"
+    >
+      {
+        testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            role={testimonial.role}
+            review={testimonial.review}
+          />
+        ))
+      }
+    </div>
+  </section>
+</div>
