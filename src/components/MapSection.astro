@@ -5,9 +5,9 @@ import Map from "../assets/images/map.png";
 ---
 
 <section class="container mx-auto py-16">
-  <div class="flex flex-row justify-between">
+  <div class="flex max-lg:flex-col justify-between gap-4">
     <div class="flex basis-1/2 flex-col justify-between text-base lg:text-xl">
-      <h2 class="font-archivo-black text-4xl font-black lg:text-8xl">
+      <h2 class="max-lg:pb-5 font-archivo-black text-4xl max-lg:text-center font-black lg:text-8xl">
         Find us
       </h2>
       <p>ul. Beautiful Street 105, City</p>
@@ -23,7 +23,7 @@ import Map from "../assets/images/map.png";
         <LinkButton link="/" text="Open in Google Maps" />
       </div>
     </div>
-    <div class="max-w-96 basis-1/2">
+    <div class="lg:max-w-96 basis-1/2">
       <Image
         src={Map}
         alt=""

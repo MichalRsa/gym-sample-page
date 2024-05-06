@@ -14,11 +14,11 @@ const { name, role, review } = Astro.props;
       sizes={`(max-width: 1024px) 80px, 120px`}
     />
     <div class="pl-3">
-      <p class="font-archivo-black text-xl lg:text-2xl font-black">{name}</p>
-      <p class="text-sm lg:text-base ">{role}</p>
+      <p class="font-archivo-black text-xl font-black lg:text-2xl">{name}</p>
+      <p class="text-sm lg:text-base">{role}</p>
     </div>
   </div>
-  <p class="text-base lg:text-xl italic">
+  <p class="text-base italic lg:text-xl">
     <span>"</span>
     {review}
     <span>"</span>

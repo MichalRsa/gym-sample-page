@@ -2,18 +2,26 @@
 interface Props {
   link: string;
   text: string;
+  fontSize?: string;
+  fontColor?: string;
   type?: "primary" | "secondary";
 }
-const { link, text, type } = Astro.props;
+const { link, text, type, fontSize, fontColor } = Astro.props;
 
-const styles = {
+const buttonTypes = {
   primary: " bg-yellow-300 text-black",
-  secondary: "text-white border border-yellow-300",
+  secondary: "border border-yellow-300",
 };
 
-const style = type ? styles[type] : styles.primary;
+const buttonType = type ? buttonTypes[type] : buttonTypes.primary;
+
+const styles = {
+  type: buttonType,
+  fontColor: fontColor || "text-black",
+  fontSize: fontSize || "text-sm lg:text-base",
+};
 ---
 
 <a href={link} class="inline-block">
-  <p class:list={["rounded-xl px-8 py-3", style]}>{text}</p>
+  <p class:list={["rounded-xl px-8 py-3", ...Object.values(styles)]}>{text}</p>
 </a>

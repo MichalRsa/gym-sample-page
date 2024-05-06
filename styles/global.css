@@ -40,7 +40,7 @@ html {
   }
 
   body {
-    @apply font-roboto font-normal;
+    @apply font-roboto;
   }
 
   p {
