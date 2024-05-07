@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { members } from "../../components/TeamSection.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { member: "Brent" } },
+    { params: { member: "George" } },
+    { params: { member: "Mike" } },
+  ];
+}
+
+const { member } = Astro.params;
+
+const _member = members.find((memberItem) => memberItem.name.includes(member));
+
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="container mx-auto pt-16">
+    <div class="flex">
+      <Image
+        src={_member.img}
+        alt=""
+        transition:name={`${_member.name}_${_member.surname}`}
+      />
+
+      <div class="pl-16 pt-16">
+        <div
+          class="mb-3 font-archivo-black text-3xl font-black text-black lg:text-5xl"
+        >
+          <span
+            transition:name={`first-name_${_member.name}_${_member.surname}`}
+            >{_member.name}</span
+          >
+          <br />
+          <span
+            transition:name={`second-name_${_member.name}_${_member.surname}`}
+            >{_member.surname}</span
+          >
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
+          enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
+          exercitation amet. Nisi anim cupidatat excepteur officia.
+          Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+          voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
+          officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
+          commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+          Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
+          officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
+          sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
+          consectetur et est culpa et culpa duis. loremPara
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>

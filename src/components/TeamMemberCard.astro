@@ -1,21 +1,31 @@
 ---
 import { Image } from "astro:assets";
-import TeamMember from "../assets/images/team-member.png";
 import LinkButton from "./LinkButton.astro";
 
-const { name, role } = Astro.props;
+const { img, name, surname, role} = Astro.props;
 ---
 
 <div class="relative">
-  <Image src={TeamMember} alt="" />
-  <article class="absolute bottom-0 left-0 bg-neutral-800 p-7 w-full rounded-3xl">
-    <p class="text-white lg:text-xl">
+  <Image src={img} alt="" transition:name={`${name}_${surname}`} />
+  <article
+    class="absolute bottom-0 left-0 w-full rounded-3xl bg-neutral-800 p-7"
+  >
+    <div class="text-white lg:text-xl">
       {role}
       <p
-        class="mb-3 font-archivo-black text-3xl lg:text-5xl font-black text-white"
-        set:html={name}
+        class="mb-3 font-archivo-black text-3xl font-black text-white lg:text-5xl"
+      >
+        <span transition:name={`first-name_${name}_${surname}`}>{name}</span>
+        <br />
+        <span transition:name={`second-name_${name}_${surname}`}>{surname}</span
+        >
+      </p>
+      <LinkButton
+        link={`/team/${name}`}
+        text="Learn More"
+        type="secondary"
+        fontColor="text-white"
       />
-      <LinkButton link="/" text="Learn More" type="secondary" fontColor="text-white" />
-    </p>
+    </div>
   </article>
 </div>

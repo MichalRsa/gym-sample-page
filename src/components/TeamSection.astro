@@ -1,39 +1,59 @@
 ---
+import TeamMember from "../assets/images/team-member.png";
+import Coach2 from "../assets/images/coach2.png";
+import Coach3 from "../assets/images/coach3.png";
 import TeamMemberCard from "../components/TeamMemberCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const members = [
+export const members = [
   {
-    name: "George <br/> Surname",
+    img: TeamMember,
+    name: "Brent",
+    surname: "Surname",
     role: "Boxing",
+    description:
+      "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
   {
-    name: "George <br/> Surname",
+    img: Coach2,
+    name: "George",
+    surname: "Surname",
     role: "Boxing",
+    description:
+      "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodolaboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptatesint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
   {
-    name: "George <br/> Surname",
+    img: Coach3,
+    name: "Mike",
+    surname: "Surname",
     role: "Boxing",
+    description:
+      "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderitdipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
 ];
 ---
 
 <div id="team">
-<section
-  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
->
-  <SectionHeader text="Meet our <br/> team" />
-  <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
-    Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
-    Goals.
-  </p>
+  <section
+    class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+  >
+    <SectionHeader text="Meet our <br/> team" />
+    <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
+      Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
+      Goals.
+    </p>
 
-  <div class="flex items-center justify-center gap-8 pt-14 max-lg:flex-col">
-    {
-      members.map((member) => (
-        <TeamMemberCard name={member.name} role={member.role} />
-      ))
-    }
-  </div>
-</section>
+    <div class="flex items-center justify-center gap-8 pt-14 max-lg:flex-col">
+      {
+        members.map((member) => (
+          <TeamMemberCard
+            img={member.img}
+            name={member.name}
+            surname={member.surname}
+            role={member.role}
+          />
+        ))
+      }
+    </div>
+  </section>
 </div>
