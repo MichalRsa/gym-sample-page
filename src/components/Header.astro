@@ -28,13 +28,22 @@ import Hamburger from "./Hamburger.astro";
       <ul
         class="flex items-center text-base max-lg:flex-col max-lg:py-8 lg:space-x-8"
       >
-        <li class="text-nowrap max-lg:pb-4"><a href="#testimonials">Testimonials</a></li>
-        <li class="text-nowrap max-lg:pb-4"><a href="#our-clients">Our Clients</a></li>
+        <li class="text-nowrap max-lg:pb-4">
+          <a href="#testimonials">Testimonials</a>
+        </li>
+        <li class="text-nowrap max-lg:pb-4">
+          <a href="#our-clients">Our Clients</a>
+        </li>
         <li class="text-nowrap max-lg:pb-4"><a href="#offer">Offer</a></li>
         <li class="text-nowrap max-lg:pb-4"><a href="#team">Team</a></li>
         <li class="text-nowrap max-lg:pb-4"><a href="#contact">Contact</a></li>
         <li class="text-nowrap max-lg:pb-4">
-          <LinkButton link="#cta" text="Book Appointment" type="secondary" fontColor="text-white" />
+          <LinkButton
+            link="#cta"
+            text="Book Appointment"
+            type="secondary"
+            fontColor="text-white"
+          />
         </li>
       </ul>
     </nav>
@@ -42,20 +51,27 @@ import Hamburger from "./Hamburger.astro";
 </header>
 
 <script>
-  const button = document.querySelector("[data-id='hamburger']");
-  const nav = document.querySelector("[data-id='nav']");
+  const init = () => {
+    const button = document.querySelector("[data-id='hamburger']");
+    const nav = document.querySelector("[data-id='nav']");
 
-  const toggleMenu = () => {
-    const isVisible = button?.getAttribute("data-visible");
+    const toggleMenu = () => {
+      const isVisible = button?.getAttribute("data-visible");
 
-    if (isVisible === "true") {
-      button?.setAttribute("data-visible", "false");
-      nav?.setAttribute("data-visible", "false");
-    } else if (isVisible === "false") {
-      button?.setAttribute("data-visible", "true");
-      nav?.setAttribute("data-visible", "true");
-    }
+      if (isVisible === "true") {
+        button?.setAttribute("data-visible", "false");
+        nav?.setAttribute("data-visible", "false");
+      } else if (isVisible === "false") {
+        button?.setAttribute("data-visible", "true");
+        nav?.setAttribute("data-visible", "true");
+      }
+    };
+
+    button?.addEventListener("click", toggleMenu);
   };
 
-  button?.addEventListener("click", toggleMenu);
+  init();
+
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init);
 </script>
