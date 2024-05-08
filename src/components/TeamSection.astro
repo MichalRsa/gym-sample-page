@@ -10,7 +10,7 @@ export const members = [
     img: TeamMember,
     name: "Brent",
     surname: "Surname",
-    role: "Boxing",
+    roles: ["Boxing", "Powerlifting", "CrossFit"],
     description:
       "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
@@ -18,7 +18,7 @@ export const members = [
     img: Coach2,
     name: "George",
     surname: "Surname",
-    role: "Boxing",
+    roles: ["Boxing", "Powerlifting", "CrossFit"],
     description:
       "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodolaboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptatesint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
@@ -26,7 +26,7 @@ export const members = [
     img: Coach3,
     name: "Mike",
     surname: "Surname",
-    role: "Boxing",
+    roles: ["Boxing", "Powerlifting", "CrossFit"],
     description:
       "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderitdipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
@@ -50,7 +50,7 @@ export const members = [
             img={member.img}
             name={member.name}
             surname={member.surname}
-            role={member.role}
+            role={member.roles[0]}
           />
         ))
       }

@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { members } from "../../components/TeamSection.astro";
 import TeamMemberCard from "../../components/TeamMemberCard.astro";
+import LinkButton from "../../components/LinkButton.astro";
+import DoubleChevron from "../../assets/images/double-chevron.svg";
 
 export function getStaticPaths() {
   return [
@@ -44,19 +46,25 @@ const remainingTeam = members.filter(
             <div class="p-8 text-white lg:w-2/3 lg:p-16">
               <div class="mb-3 font-archivo-black font-black">
                 <h2
-                  class="text-3xl lg:text-5xl"
+                  class="text-3xl lg:text-5xl pb-2"
                   transition:name={`first-name_${_member.name}_${_member.surname}`}
                 >
-                  {_member.name}
+                    {`${_member.name} ${_member.surname}`}
                 </h2>
-                <p
-                  class="text-3xl lg:text-5xl"
-                  transition:name={`second-name_${_member.name}_${_member.surname}`}
-                >
-                  {_member.surname}
-                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {_member.roles.map((role) => (
+                    <LinkButton
+                      link=""
+                      text={role}
+                      type="secondary"
+                      fontSize="text-xs"
+                      fontColor="text-white"
+                    />
+                  ))}
+                </div>
               </div>
-              <p>
+              <p class="pb-2">
                 Lorem ipsum dolor sit amet, officia excepteur ex fugiat
                 reprehenderit enim labore culpa sint ad nisi Lorem pariatur
                 mollit ex esse exercitation amet. Nisi anim cupidatat excepteur
@@ -70,6 +78,7 @@ const remainingTeam = members.filter(
                 enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur
                 et est culpa et culpa duis. loremPara
               </p>
+                <LinkButton img={DoubleChevron} text="Book training" link="" fontColor="text-white" type="secondary" />
             </div>
           </div>
         )}
@@ -79,7 +88,7 @@ const remainingTeam = members.filter(
               img={member.img}
               name={member.name}
               surname={member.surname}
-              role={member.role}
+              role={member.roles[0]}
             />
           ))}
         </section>
