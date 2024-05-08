@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import RickAstley from "../assets/images/error.gif";
+import LinkButton from "../components/LinkButton.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="container mx-auto">
+    <div class="flex flex-col items-center pt-6 lg:pt-12">
+      <h1 class="text-red-900 lg:text-9xl">404</h1>
+      <p class="lg:text-5xl pb-2 lg:pb-4">Oops this website doesn't exist.</p>
+      <LinkButton link="javascript:history.back()" text="Take me back" />
+      <div class="rounded-3xl overflow-hidden mt-6 lg:mt-12">
+        <Image src={RickAstley} alt="Rick Astley dances" />
+      </div>
+    </div>
+  </div>
+</Layout>

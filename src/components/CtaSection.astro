@@ -4,12 +4,16 @@ import LinkButton from "./LinkButton.astro";
 ---
 
 <div id="cta">
-<section class:list={["animationHidden","container mx-auto py-16 overflow-hidden"]}>
-  <h3 class="max-lg:text-xl text-center">Would you like to work with us?</h3>
-  <SectionHeader text="Book a first session <br/> for free" />
-  <div class="text-xl max-sm:gap-4 lg:text-4xl max-sm:flex-col max-sm:items-center flex lg:justify-center justify-around lg:gap-16 pt-14">
-    <LinkButton text="Book a session" link="/" />
-    <LinkButton text="Contact us" link="/" type="secondary" />
-  </div>
-</section>
+  <section
+    class:list={["animationHidden", "container mx-auto overflow-hidden py-16"]}
+  >
+    <h3 class="text-center max-lg:text-xl">Would you like to work with us?</h3>
+    <SectionHeader text="Book a first session <br/> for free" />
+    <div
+      class="flex justify-around pt-14 text-xl max-sm:flex-col max-sm:items-center max-sm:gap-4 lg:justify-center lg:gap-16 lg:text-4xl"
+    >
+      <LinkButton text="Book a session" link="/oops" />
+      <LinkButton text="Contact us" link="/oops" type="secondary" />
+    </div>
+  </section>
 </div>
