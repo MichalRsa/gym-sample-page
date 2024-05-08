@@ -38,14 +38,19 @@ const links = [
       >
         {
           links.map((link) => (
-            <li class="relative text-nowrap max-lg:pb-4">
-              <a href={'/' + link.href}>{link.text}</a>
+            <li
+              class:list={[
+                "relative text-nowrap after:transition-all max-lg:pb-4",
+                "after:absolute after:bottom-0 after:left-0 after:block after:h-[1px] after:w-full after:-translate-x-4 after:bg-white after:opacity-0 hover:after:translate-x-0 hover:after:opacity-100 md:after:h-[3px]",
+              ]}
+            >
+              <a href={link.href}>{link.text}</a>
             </li>
           ))
         }
         <li class="text-nowrap max-lg:pb-4">
           <LinkButton
-            link="/#cta"
+            link="#cta"
             text="Book Appointment"
             type="secondary"
             fontColor="text-white"
