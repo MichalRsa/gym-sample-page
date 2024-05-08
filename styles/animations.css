@@ -18,6 +18,6 @@
 
 .show {
   @apply opacity-100;
-  @apply blur-none;
+  @apply filter-none;
   @apply translate-x-0 translate-y-0;
 }

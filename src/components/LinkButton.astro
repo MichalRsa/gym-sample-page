@@ -9,8 +9,8 @@ interface Props {
 const { link, text, type, fontSize, fontColor } = Astro.props;
 
 const buttonTypes = {
-  primary: " bg-yellow-300 text-black",
-  secondary: "border border-yellow-300",
+  primary: "bg-yellow-300 text-black",
+  secondary: "border border-yellow-300 backdrop-blur-md",
 };
 
 const buttonType = type ? buttonTypes[type] : buttonTypes.primary;
@@ -23,5 +23,5 @@ const styles = {
 ---
 
 <a href={link} class="inline-block">
-  <p class:list={["rounded-xl px-8 py-3", ...Object.values(styles)]}>{text}</p>
+  <p class:list={["transition-all duration-300 hover:bg-yellow-500  rounded-xl px-8 py-3 font-bold", ...Object.values(styles)]}>{text}</p>
 </a>
