@@ -5,12 +5,12 @@ import { Image } from "astro:assets";
 interface Props {
   link: string;
   text: string;
-  fontSize?: string;
   fontColor?: string;
   type?: "primary" | "secondary";
   img?: ImageMetadata;
+  size?: "xs" | "sm" | "base" | "lg";
 }
-const { link, text, type, fontSize, fontColor, img } = Astro.props;
+const { link, text, type,  size, fontColor, img } = Astro.props;
 
 const buttonTypes = {
   primary: "bg-yellow-300 text-black",
@@ -18,18 +18,24 @@ const buttonTypes = {
 };
 
 const buttonType = type ? buttonTypes[type] : buttonTypes.primary;
+const buttonSize = {
+  xs: "text-xs px-3 py-1",
+  sm: "text-sm px-6 py-4",
+  base: "text-base px-8 py-3",
+  lg: "text-lg px-12 py-4",
+};
 
 const styles = {
   type: buttonType,
   fontColor: fontColor || "text-black",
-  fontSize: fontSize || "text-sm lg:text-base",
+  size: buttonSize[size || "base"],
 };
 ---
 
 <a href={link} class="inline-block">
   <p
     class:list={[
-      "flex items-center justify-center rounded-xl px-8 py-3  font-bold transition-all duration-300 hover:bg-yellow-500",
+      "flex items-center justify-center rounded-xl font-bold transition-all duration-300 hover:bg-yellow-500",
       ...Object.values(styles),
     ]}
   >

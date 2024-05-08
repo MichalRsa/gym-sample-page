@@ -47,7 +47,7 @@ const remainingTeam = members.filter(
               <div class="mb-3 font-archivo-black font-black">
                 <h2
                   class="text-3xl lg:text-5xl pb-2"
-                  transition:name={`first-name_${_member.name}_${_member.surname}`}
+                  transition:name={`first-name_${_member.name}`}
                 >
                     {`${_member.name} ${_member.surname}`}
                 </h2>
@@ -58,7 +58,7 @@ const remainingTeam = members.filter(
                       link=""
                       text={role}
                       type="secondary"
-                      fontSize="text-xs"
+                      size="xs"
                       fontColor="text-white"
                     />
                   ))}

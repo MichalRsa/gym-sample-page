@@ -15,11 +15,11 @@ const { img, name, surname, role } = Astro.props;
       {role}
       <p
         class="mb-3 font-archivo-black text-3xl font-black text-white lg:text-5xl"
+        transition:name={`first-name_${name}`}
       >
-        <span transition:name={`first-name_${name}_${surname}`}>{name}</span>
+        <span>{name}</span>
         <br />
-        <span transition:name={`second-name_${name}_${surname}`}>{surname}</span
-        >
+        <span>{surname}</span>
       </p>
       <LinkButton
         link={`/team/${name}`}
