@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
+import DoubleChevron from "../assets/images/double-chevron.svg";
 import LinkButton from "./LinkButton.astro";
 
-const { img, name, surname, role} = Astro.props;
+const { img, name, surname, role } = Astro.props;
 ---
 
 <div class="relative">
@@ -25,6 +26,7 @@ const { img, name, surname, role} = Astro.props;
         text="Learn More"
         type="secondary"
         fontColor="text-white"
+        img={DoubleChevron}
       />
     </div>
   </article>

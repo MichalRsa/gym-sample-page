@@ -1,6 +1,7 @@
 ---
 // @ts-nocheck
 import { Image } from "astro:assets";
+import DoubleChevron from "../assets/images/double-chevron.svg";
 import LinkButton from "./LinkButton.astro";
 import type { ImageMetadata } from "astro";
 
@@ -24,11 +25,13 @@ const dimenssion = {
   class={`rounded-3xl overflow-hidden relative grid gap-4 ${dimenssion[type.toString()]}`}
 >
   <Image src={img} alt="" class="h-full w-full object-cover object-bottom" />
-  <div class="absolute bottom-0 left-0 w-full pb-4 pl-4 sm:pb-7 sm:pl-7 text-white">
+  <div
+    class="absolute bottom-0 left-0 w-full pb-4 pl-4 text-white sm:pb-7 sm:pl-7"
+  >
     <p class="sm:pb-3 sm:text-lg">{role}</p>
-    <p class="sm:pb-3 font-archivo-black text-2xl font-black sm:text-5xl">
+    <p class="font-archivo-black text-2xl font-black sm:pb-3 sm:text-5xl">
       {name}
     </p>
-    <LinkButton link="" text="Learn More >>" />
+    <LinkButton link="" text="Learn More" img={DoubleChevron} />
   </div>
 </article>

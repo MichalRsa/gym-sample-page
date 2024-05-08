@@ -1,12 +1,16 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
 interface Props {
   link: string;
   text: string;
   fontSize?: string;
   fontColor?: string;
   type?: "primary" | "secondary";
+  img?: ImageMetadata;
 }
-const { link, text, type, fontSize, fontColor } = Astro.props;
+const { link, text, type, fontSize, fontColor, img } = Astro.props;
 
 const buttonTypes = {
   primary: "bg-yellow-300 text-black",
@@ -23,5 +27,24 @@ const styles = {
 ---
 
 <a href={link} class="inline-block">
-  <p class:list={["transition-all duration-300 hover:bg-yellow-500  rounded-xl px-8 py-3 font-bold", ...Object.values(styles)]}>{text}</p>
+  <p
+    class:list={[
+      "flex items-center justify-center rounded-xl px-8 py-3  font-bold transition-all duration-300 hover:bg-yellow-500",
+      ...Object.values(styles),
+    ]}
+  >
+    {text}
+
+    {
+      img && (
+        <span class="pl-2">
+          <Image
+            src={img}
+            alt=""
+            class={`px-0.5 ${styles.fontColor === "text-black" && "invert"}`}
+          />
+        </span>
+      )
+    }
+  </p>
 </a>
