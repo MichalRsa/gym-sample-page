@@ -6,28 +6,67 @@ import LinkButton from "./LinkButton.astro";
 const { img, name, surname, role } = Astro.props;
 ---
 
-<div class="relative">
-  <Image src={img} alt="" transition:name={`${name}_${surname}`} />
-  <article
-    class="absolute bottom-0 left-0 w-full rounded-3xl bg-neutral-800 p-7"
-  >
-    <div class="text-white lg:text-xl">
-      {role}
-      <p
-        class="mb-3 font-archivo-black text-3xl font-black text-white lg:text-5xl"
-        transition:name={`first-name_${name}`}
-      >
-        <span>{name}</span>
-        <br />
-        <span>{surname}</span>
-      </p>
-      <LinkButton
-        link={`/team/${name}`}
-        text="Learn More"
-        type="secondary"
-        fontColor="text-white"
-        img={DoubleChevron}
-      />
-    </div>
-  </article>
-</div>
+<team-member-card>
+  <div class="relative overflow-hidden rounded-3xl ">
+    <Image
+      data-image
+      class="saturate-0 transition-all duration-500"
+      src={img}
+      alt=""
+      transition:name={`${name}_${surname}`}
+    />
+    <article
+      class="absolute bottom-0 left-0 w-full bg-neutral-800 p-7"
+    >
+      <div class="text-white lg:text-xl">
+        {role}
+        <p
+          class="mb-3 font-archivo-black text-3xl font-black text-white lg:text-5xl"
+          transition:name={`first-name_${name}`}
+        >
+          <span>{name}</span>
+          <br />
+          <span>{surname}</span>
+        </p>
+        <div data-button-wrapper class="inline-block">
+          <LinkButton
+            link={`/team/${name}`}
+            text="Learn More"
+            type="secondary"
+            fontColor="text-white"
+            img={DoubleChevron}
+          />
+        </div>
+      </div>
+    </article>
+  </div>
+</team-member-card>
+
+<script>
+  class TeamMemberCard extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector<HTMLElement>("[data-button-wrapper]");
+      const image = this.querySelector<HTMLElement>("[data-image]");
+
+      if (image == null) return;
+
+      const onHover = () => {
+        image.classList.add("saturate-100");
+        image.classList.add("scale-105");
+        image.classList.remove("saturate-0");
+      };
+      const onLeave = () => {
+        image.classList.remove("saturate-100");
+        image.classList.remove("scale-105");
+        image.classList.add("saturate-0");
+      };
+
+      button?.addEventListener("mouseover", onHover);
+      button?.addEventListener("mouseleave", onLeave);
+    }
+  }
+
+  customElements.define("team-member-card", TeamMemberCard);
+</script>
