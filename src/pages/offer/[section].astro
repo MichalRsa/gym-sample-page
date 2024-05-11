@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { offer } from "../../components/OfferSection.astro";
+
+export function getStaticPaths() {
+  return offer.map((offerItem) => {
+    return { params: { section: offerItem.link } };
+  });
+}
+---
+
+<Layout title="Welcome to Astro.">
+  <section
+    class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+  >
+    What's up
+  </section>
+</Layout>

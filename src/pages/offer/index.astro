@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import OfferCard from "../../components/OfferCard.astro";
+import { offer } from "../../components/OfferSection.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <section
+    class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+  >
+    <div class="grid gap-4 py-10 lg:grid-cols-2">
+      <div class="grid gap-4">
+        {
+          offer.map((offerItem, index) => (
+            <OfferCard
+              link={offerItem.link}
+              index={index + 1}
+              img={offerItem.img}
+              name={offerItem.name}
+              role={offerItem.role}
+            />
+          ))
+        }
+      </div>
+      <div class="grid gap-4">
+        {
+          offer.map((offerItem, index) => (
+            <OfferCard
+              link={offerItem.link}
+              index={index}
+              img={offerItem.img}
+              name={offerItem.name}
+              role={offerItem.role}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -8,12 +8,18 @@ import Physiotherapy2 from "../assets/images/physiotherapy2.png";
 import PersonalSession from "../assets/images/personal-session.png";
 import LinkButton from "./LinkButton.astro";
 
-const offer = [
+interface Props {
+  withButton?: boolean;
+}
+
+const { withButton = false } = Astro.props;
+
+export const offer = [
   {
     img: Powerlifting,
     name: "Get Stronger",
     role: "Powerlifting",
-    link: "/oops",
+    link: "/powerlifting",
     width: "640",
     height: "640",
   },
@@ -21,7 +27,7 @@ const offer = [
     img: Physiotherapy2,
     name: "Get back in shape after injury",
     role: "Physiotherapy",
-    link: "/oops",
+    link: "/physiotherapy",
     width: "640",
     height: "350",
   },
@@ -30,7 +36,7 @@ const offer = [
     img: Physiotherapy,
     name: "Fix the pain",
     role: "Physiotherapy",
-    link: "/oops",
+    link: "/physiotherapy",
     width: "640",
     height: "350",
   },
@@ -38,7 +44,7 @@ const offer = [
     img: PersonalSession,
     name: "Lose weight",
     role: "Personal session",
-    link: "/oops",
+    link: "/personal-session",
     width: "640",
     height: "640",
   },
@@ -46,43 +52,58 @@ const offer = [
 ---
 
 <div id="offer">
-<section
-  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
->
-  <SectionHeader text="What are your <br/> goals?" />
+  <section
+    class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
+  >
+    <SectionHeader text="What are your <br/> goals?" />
+    <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
+      Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
+      Goals.
+    </p>
 
-  <div class="grid gap-4 py-10 lg:grid-cols-2">
-    <div class="grid gap-4">
-      {
-        offer
-          .slice(0, 2)
-          .map((offerItem, index) => (
-            <OfferCard
-              index={index + 1}
-              img={offerItem.img}
-              name={offerItem.name}
-              role={offerItem.role}
-            />
-          ))
-      }
+    <div class="grid gap-4 py-10 lg:grid-cols-2">
+      <div class="grid gap-4">
+        {
+          offer
+            .slice(0, 2)
+            .map((offerItem, index) => (
+              <OfferCard
+                link={offerItem.link}
+                index={index + 1}
+                img={offerItem.img}
+                name={offerItem.name}
+                role={offerItem.role}
+              />
+            ))
+        }
+      </div>
+      <div class="grid gap-4">
+        {
+          offer
+            .slice(2)
+            .map((offerItem, index) => (
+              <OfferCard
+                link={offerItem.link}
+                index={index}
+                img={offerItem.img}
+                name={offerItem.name}
+                role={offerItem.role}
+              />
+            ))
+        }
+      </div>
     </div>
-    <div class="grid gap-4">
-      {
-        offer
-          .slice(2)
-          .map((offerItem, index) => (
-            <OfferCard
-              index={index}
-              img={offerItem.img}
-              name={offerItem.name}
-              role={offerItem.role}
-            />
-          ))
-      }
-    </div>
-  </div>
-  <div class="text-center lg:text-3xl">
-    <LinkButton link="/oops" text="See All Classes" img={DoubleChevron} size="lg" />
-  </div>
-</section>
+    {
+      withButton && (
+        <div class="text-center lg:text-3xl">
+          <LinkButton
+            link="/offer"
+            text="See All Classes"
+            img={DoubleChevron}
+            size="lg"
+          />
+        </div>
+      )
+    }
+  </section>
 </div>

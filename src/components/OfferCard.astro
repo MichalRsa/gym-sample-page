@@ -10,9 +10,10 @@ interface Props {
   name: string;
   role: string;
   index: number;
+  link: string
 }
 
-const { img, name, role, index } = Astro.props;
+const { img, name, role, index, link } = Astro.props;
 
 const type = index % 2;
 const dimenssion = {
@@ -28,10 +29,10 @@ const dimenssion = {
   <div
     class="absolute bottom-0 left-0 w-full bg-gradient-to-t pb-4 pl-4 text-white sm:pb-7 sm:pl-7 to-transparent from-black"
   >
-    <p class="sm:pb-3 sm:text-lg">{role}</p>
+    <p class=" sm:text-lg">{role}</p>
     <p class="font-archivo-black text-2xl font-black sm:pb-3 sm:text-5xl">
       {name}
     </p>
-    <LinkButton link="/oops" text="Learn More" img={DoubleChevron} />
+    <LinkButton link={`offer${link}`} text="Learn More" img={DoubleChevron} />
   </div>
 </article>
