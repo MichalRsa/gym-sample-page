@@ -1,2 +1,82 @@
-<div>
-</div>
+---
+import { Image } from "astro:assets";
+import FbIcon from "../assets/images/facebook-icon.png";
+import IgIcon from "../assets/images/instagram-icon.png";
+import LiIcon from "../assets/images/linkedin-icon.png";
+---
+
+<footer class="bg-neutral-900 p-12 text-white flex max-lg:flex-col items-center lg:justify-evenly">
+  <div class=" max-lg:text-center pb-6">
+    <h2 class="pb-2">PowerHouse</h2>
+    <div class="flex flex-shrink justify-around">
+      <a href="https://www.linkedin.com/">
+        <Image
+          src={LiIcon}
+          alt=""
+          width="40"
+          height="40"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <a href="https://www.instagram.com/">
+        <Image
+          src={IgIcon}
+          alt=""
+          width="40"
+          height="40"
+          loading="lazy"
+          decoding="async"
+        />
+      </a><a href="https://www.facebook.com/">
+        <Image
+          src={FbIcon}
+          alt=""
+          width="40"
+          height="40"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+    </div>
+  </div>
+  <ul class="md:w-64">
+    <li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Monday</span>
+        <span>8:00 - 21:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Tuesday</span>
+        <span>8:00 - 21:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Wednesday</span>
+        <span>8:00 - 21:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Thursday</span>
+        <span>8:00 - 21:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Friday</span>
+        <span>8:00 - 21:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Saturday</span>
+        <span>8:00 - 23:00</span>
+      </p>
+    </li><li>
+      <p class="flex justify-between pb-1">
+        <span class="pr-2">Sunday</span>
+        <span>8:00 - 14:00</span>
+      </p>
+    </li>
+  </ul>
+  <div></div>
+</footer>
