@@ -22,10 +22,16 @@ const dimenssion = {
 };
 ---
 
+<offer-card>
 <article
   class={`rounded-3xl overflow-hidden relative grid gap-4 ${dimenssion[type.toString()]}`}
 >
-  <Image src={img} alt="" class="h-full w-full object-cover object-bottom" />
+  <Image
+    data-image
+    src={img}
+    alt=""
+    class="saturate-50 transition-all h-full w-full object-cover object-bottom duration-500"
+  />
   <div
     class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent pb-4 pl-4 text-white sm:pb-7 sm:pl-7"
   >
@@ -33,6 +39,38 @@ const dimenssion = {
     <p class="font-archivo-black text-2xl font-black sm:pb-3 sm:text-5xl">
       {name}
     </p>
-    <LinkButton link={`offer${link}`} text="Learn More" img={DoubleChevron} />
+    <div data-button-wrapper class="inline-block">
+      <LinkButton link={`offer${link}`} text="Learn More" img={DoubleChevron} />
+    </div>
   </div>
 </article>
+</offer-card>
+
+<script>
+  class OfferCard extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector<HTMLElement>("[data-button-wrapper]");
+      const image = this.querySelector<HTMLElement>("[data-image]");
+
+      if (image == null) return;
+
+      const onHover = () => {
+        image.classList.add("saturate-100");
+        image.classList.add("scale-105");
+        image.classList.remove("saturate-50");
+      };
+      const onLeave = () => {
+        image.classList.remove("saturate-100");
+        image.classList.remove("scale-105");
+        image.classList.add("saturate-50");
+      };
+
+      button?.addEventListener("mouseover", onHover);
+      button?.addEventListener("mouseleave", onLeave);
+    }
+  }
+
+  customElements.define("offer-card", OfferCard);
+</script>
