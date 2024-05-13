@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import { offer } from "../../components/OfferSection.astro";
 import { members } from "../../components/TeamSection.astro";
 import TeamMemberCard from "../../components/TeamMemberCard.astro";
+import TextWithImage from "../../components/TextWithImage.astro";
 
 export function getStaticPaths() {
   return offer.map((offerItem) => {
@@ -14,18 +15,25 @@ export function getStaticPaths() {
 const { section } = Astro.params;
 
 const sectionData = offer.find((item) => item.link.substring(1) === section);
+
+const text =
+  "Mauris in congue mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin vel urna aliquam, aliquet ligula quis, dignissim urna. Sed pharetra eu lorem vel scelerisque. Maecenas consectetur velit ac porta dapibus. Integer congue magna et tempus efficitur.";
 ---
 
 <Layout title="Welcome to Astro.">
   <div
     class="relative -top-2 overflow-hidden from-black to-transparent lg:h-[60vh]"
   >
-    <Image alt="" src={sectionData.img} class="h-full w-full object-cover" />
+    <Image
+      alt=""
+      src={sectionData?.img || ""}
+      class="h-full w-full object-cover"
+    />
     <div class="absolute bottom-0 left-0 z-20 w-full text-center">
       <h1
         class="bg-gradient-to-t pb-8 text-3xl text-white lg:pb-20 lg:text-8xl"
       >
-        {sectionData.role}
+        {sectionData?.role}
       </h1>
     </div>
   </div>
@@ -44,86 +52,11 @@ const sectionData = offer.find((item) => item.link.substring(1) === section);
         porta dapibus. Integer congue magna et tempus efficitur.
       </p>
     </div>
-    <article
-      class="mx-auto flex max-w-[1024px] items-center justify-around gap-4 max-lg:flex-col-reverse"
-    >
-      <div
-        class="flex w-96 flex-col max-lg:max-w-full lg:aspect-square lg:min-w-96 lg:justify-center"
-      >
-        <h2 class="pb-2 max-lg:text-center">Building Strength</h2>
+    <TextWithImage img={sectionData.img} text={text} />
+    <TextWithImage type="reversed" img={sectionData.img} text={text} />
+    <TextWithImage img={sectionData.img} text={text} />
 
-        <p>
-          Mauris in congue mauris. Pellentesque habitant morbi tristique
-          senectus et netus et malesuada fames ac turpis egestas. Proin vel urna
-          aliquam, aliquet ligula quis, dignissim urna. Sed pharetra eu lorem
-          vel scelerisque. Maecenas consectetur velit ac porta dapibus. Integer
-          congue magna et tempus efficitur.
-        </p>
-      </div>
-      <div
-        class="aspect-square w-96 overflow-hidden rounded-3xl max-lg:max-w-full lg:min-w-96"
-      >
-        <Image
-          alt=""
-          src={sectionData.img}
-          class="h-full w-full object-cover"
-        />
-      </div>
-    </article>
 
-    <article
-      class="mx-auto flex max-w-[1024px] items-center justify-around gap-4 max-lg:flex-col-reverse lg:flex-row-reverse"
-    >
-      <div
-        class="flex w-96 flex-col max-lg:max-w-full lg:aspect-square lg:min-w-96 lg:justify-center"
-      >
-        <h2 class="pb-2 max-lg:text-center">Building Strength</h2>
-
-        <p>
-          Mauris in congue mauris. Pellentesque habitant morbi tristique
-          senectus et netus et malesuada fames ac turpis egestas. Proin vel urna
-          aliquam, aliquet ligula quis, dignissim urna. Sed pharetra eu lorem
-          vel scelerisque. Maecenas consectetur velit ac porta dapibus. Integer
-          congue magna et tempus efficitur.
-        </p>
-      </div>
-      <div
-        class="aspect-square w-96 overflow-hidden rounded-3xl max-lg:max-w-full lg:min-w-96"
-      >
-        <Image
-          alt=""
-          src={sectionData.img}
-          class="h-full w-full object-cover"
-        />
-      </div>
-    </article>
-
-    <article
-      class="mx-auto flex max-w-[1024px] items-center justify-around gap-4 max-lg:flex-col-reverse"
-    >
-      <div
-        class="flex w-96 flex-col max-lg:max-w-full lg:aspect-square lg:min-w-96 lg:justify-center"
-      >
-        <h2 class="pb-2 max-lg:text-center">Building Strength</h2>
-
-        <p>
-          Mauris in congue mauris. Pellentesque habitant morbi tristique
-          senectus et netus et malesuada fames ac turpis egestas. Proin vel urna
-          aliquam, aliquet ligula quis, dignissim urna. Sed pharetra eu lorem
-          vel scelerisque. Maecenas consectetur velit ac porta dapibus. Integer
-          congue magna et tempus efficitur.
-        </p>
-      </div>
-      <div
-        class="aspect-square w-96 overflow-hidden rounded-3xl max-lg:max-w-full lg:min-w-96"
-      >
-        <Image
-          alt=""
-          src={sectionData.img}
-          class="h-full w-full object-cover"
-        />
-      </div>
-    </article>
     <article>
       <h2 class="flex flex-col text-center">
         <span>{sectionData.role}</span>

@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  img: ImageMetadata;
+  text: string;
+  type: string;
+}
+
+const { img, text, type } = Astro.props;
+
+const direction = type === "reversed" ? "lg:flex-row-reverse" : "";
+---
+
+<article
+  class:list={[
+    direction,
+    "mx-auto flex max-w-[1024px] items-center justify-around gap-4 max-lg:flex-col-reverse",
+  ]}
+>
+  <div
+    class="flex w-96 flex-col max-lg:max-w-full lg:aspect-square lg:min-w-96 lg:justify-center"
+  >
+    <h2 class="text-3xl pb-2 max-lg:text-center">Building Strength</h2>
+
+    <p>
+      {text}
+    </p>
+  </div>
+  <div
+    data-img
+    class="aspect-square w-96 rotate-6 overflow-hidden rounded-3xl duration-1000 max-lg:max-w-full lg:min-w-96"
+  >
+    <Image alt="" src={img} class="translate-all h-full w-full object-cover" />
+  </div>
+</article>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("rotate-0");
+        entry.target.classList.remove("rotate-6");
+      }
+    });
+  }, {threshold: 1});
+
+  const setObserver = (): void => {
+    const hiddenElements = document.querySelectorAll("[data-img]");
+
+    hiddenElements.forEach((element) => {
+      observer.observe(element);
+    });
+  };
+
+  setObserver();
+
+  document.addEventListener("astro:after-swap", () => {
+    setObserver();
+  });
+</script>
