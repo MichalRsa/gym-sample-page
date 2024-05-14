@@ -44,11 +44,13 @@ const links = [
                 "after:absolute after:bottom-0 after:left-0 after:block after:h-[1px] after:w-full after:-translate-x-4 after:bg-white after:opacity-0 hover:after:translate-x-0 hover:after:opacity-100 max-lg:after:-translate-y-4 max-lg:hover:after:-translate-y-4 md:after:h-[3px]",
               ]}
             >
-              <a href={"/" + link.href}>{link.text}</a>
+              <a href={"/" + link.href} data-nav-link>
+                {link.text}
+              </a>
             </li>
           ))
         }
-        <li class="text-nowrap max-lg:pb-4">
+        <li class="text-nowrap max-lg:pb-4" data-nav-link>
           <LinkButton
             link="/#cta"
             text="Book Appointment"
@@ -79,6 +81,11 @@ const links = [
     };
 
     button?.addEventListener("click", toggleMenu);
+
+    const listItems = document.querySelectorAll("[data-nav-link]");
+    console.log(listItems);
+
+    listItems.forEach((item) => item.addEventListener("click", toggleMenu));
   };
 
   init();
