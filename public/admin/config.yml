@@ -1,3 +1,12 @@
+local_backend: true
+  
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded media
+  
+backend:
+ name: git-gateway
+ branch: decap-cms # Branch to update (optional; defaults to master)
+   
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
@@ -10,9 +19,35 @@ collections:
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }
-        
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
-backend:
- name: git-gateway
- branch: main # Branch to update (optional; defaults to master)
+  - name: "pages"
+    label: "Pages"
+    files:
+     - name: "home"
+       label: "Home"
+       file: "src/content/pages/home_page.md"
+       fields:
+        - label: Hero
+          name: hero
+          widget: object
+          fields: 
+            - {label: "Hero Image", name: "hero_img", widget: "image"}
+            - {label: "Heading", name: "heading", widget: "string"}
+            - {label: "Sub Heading", name: "sub_heading", widget: "string"}
+        - label: Testimonials
+          name: testimonials
+          widget: object
+          fields: 
+            - {label: "heading", name: "heading", widget: "string"}
+            - label: Testimonials
+              name: testimonials
+              widget: list
+              summary: '{{fields.review}} - {{fields.author.name}}'
+              fields:
+                - {label: Review , name: review, widget: string, default: "Everything is awesome!"}
+                - label: Author
+                  name: author
+                  widget: object
+                  fields:
+                    - {label: Name, name: name, widget: string, default: "Emmet"}
+                    - {label: Role, name: role, widget: string, default: "Customer"}
+                    - {label: Avatar, name: avatar, widget: image, default: "../../src/assets/images/customer.png"}

@@ -9,12 +9,17 @@ import MapSection from "../components/MapSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import CtaSection from "../components/CtaSection.astro";
 import Spacer from "../components/Spacer.astro";
+import { getEntry } from "astro:content";
+
+const { data } = await getEntry("pages", "home_page");
+
+const { hero, testimonials } = data;
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <Hero />
-    <TestimonialsSection />
+    <Hero hero={hero} />
+    <TestimonialsSection testimonials={testimonials}/>
     <Spacer />
     <KnownClientsSection />
     <Spacer type="secondary" />

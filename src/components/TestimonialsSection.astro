@@ -2,26 +2,15 @@
 import TestimonialCard from "../components/TestimonialCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const testimonials = [
-  {
-    name: "Karen Smith",
-    role: "Proffesional Someone",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
-  },
-  {
-    name: "Karen Smith",
-    role: "Proffesional Someone",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
-  },
-  {
-    name: "Karen Smith",
-    role: "Proffesional Someone",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam erat lectus, ac feugiat nisl lobortis ac. Maecenas purus elit, tristique et mi at, porttitor pellentesque eros.",
-  },
-];
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  testimonials: Pages["data"]["testimonials"];
+}
+
+const { testimonials } = Astro.props;
 ---
 
 <div id="testimonials">
@@ -31,15 +20,16 @@ const testimonials = [
       "w-full overflow-hidden py-16 lg:container lg:mx-auto",
     ]}
   >
-    <SectionHeader text="Good words <br/> about us" />
+    <SectionHeader text={testimonials.heading} />
     <div
       class="flex gap-8 px-4 pt-10 max-lg:overflow-x-scroll lg:justify-center lg:gap-16"
     >
       {
-        testimonials.map((testimonial) => (
+        testimonials.testimonials.map((testimonial) => (
           <TestimonialCard
-            name={testimonial.name}
-            role={testimonial.role}
+            name={testimonial.author.name}
+            role={testimonial.author.role}
+            avatar={testimonial.author.avatar}
             review={testimonial.review}
           />
         ))

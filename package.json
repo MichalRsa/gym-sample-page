@@ -8,7 +8,9 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "local-cms": "npx decap-server"
+    
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",

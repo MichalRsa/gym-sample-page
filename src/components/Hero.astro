@@ -3,6 +3,16 @@ import CustomPicture from "../components/CustomPicture.astro";
 import LinkButton from "./LinkButton.astro";
 import heroBackground from "../assets/images/heroBackground.png";
 import heroBackgroundMobile from "../assets/images/heroBackgroundMobile.png";
+
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  hero: Pages["data"]["hero"];
+}
+
+const { hero } = Astro.props;
 ---
 
 <div class="relative overflow-hidden max-lg:h-[90vh] lg:-top-2">
@@ -19,9 +29,8 @@ import heroBackgroundMobile from "../assets/images/heroBackgroundMobile.png";
     >
       <h1
         class="text-normal text-5xl text-white max-lg:-translate-y-[26%] lg:text-9xl lg:leading-[120px]"
-      >
-        Find Your<br /> Power
-      </h1>
+        set:html={hero.heading}
+      />
 
       <div
         class="max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:-translate-x-1/2 max-lg:translate-y-12"
@@ -29,8 +38,7 @@ import heroBackgroundMobile from "../assets/images/heroBackgroundMobile.png";
         <p
           class="mb-3 max-w-xl text-lg text-white max-xl:px-4 max-lg:w-[30ch] max-lg:rounded-xl max-lg:bg-neutral-200/30 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-75 lg:text-4xl"
         >
-          Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
-          Goals.
+          {hero.sub_heading}
         </p>
 
         <LinkButton text="Book Appointment" link="/" fontColor="text-black" />
