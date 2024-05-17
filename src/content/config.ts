@@ -38,10 +38,23 @@ const HomePage = {
     sub_heading: z.string(),
     offer_list: z.array(
       z.object({
-          name: z.string(),
-          role: z.string(),
-          link: z.string(),
-          image: z.string(),
+        name: z.string(),
+        role: z.string(),
+        link: z.string(),
+        image: z.string(),
+      }),
+    ),
+  }),
+  team_section: z.object({
+    heading: z.string(),
+    sub_heading: z.string(),
+    team_list: z.array(
+      z.object({
+        name: z.string(),
+        surname: z.string(),
+        role: z.array(z.string()),
+        description: z.string(),
+        image: z.string(),
       }),
     ),
   }),

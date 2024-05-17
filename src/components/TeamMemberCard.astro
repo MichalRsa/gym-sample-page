@@ -2,35 +2,44 @@
 import { Image } from "astro:assets";
 import DoubleChevron from "../assets/images/double-chevron.svg";
 import LinkButton from "./LinkButton.astro";
+import type { CollectionEntry } from "astro:content";
 
-const { img, name, surname, role } = Astro.props;
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  member: Pages["data"]["team_section"]["team_list"][0];
+}
+
+const { member } = Astro.props;
+
+const MemberImage = await import(`../../${member.image}`);
+
+console.log(member.role)
 ---
 
 <team-member-card>
-  <div class="relative overflow-hidden rounded-3xl ">
+  <div class="relative overflow-hidden rounded-3xl">
     <Image
       data-image
       class="saturate-0 transition-all duration-500"
-      src={img}
+      src={MemberImage.default}
       alt=""
-      transition:name={`${name}_${surname}`}
+      transition:name={`${member.name}_${member.surname}`}
     />
-    <article
-      class="absolute bottom-0 left-0 w-full bg-neutral-800 p-7"
-    >
+    <article class="absolute bottom-0 left-0 w-full bg-neutral-800 p-7">
       <div class="text-white lg:text-xl">
-        {role}
+        {member.role[0]}
         <p
           class="mb-3 font-archivo-black text-3xl font-black text-white lg:text-5xl"
-          transition:name={`first-name_${name}`}
+          transition:name={`first-name_${member.name}`}
         >
-          <span>{name}</span>
+          <span>{member.name}</span>
           <br />
-          <span>{surname}</span>
+          <span>{member.surname}</span>
         </p>
         <div data-button-wrapper class="inline-block">
           <LinkButton
-            link={`/team/${name}`}
+            link={`/team/${member.name}`}
             text="Learn More"
             type="secondary"
             fontColor="text-white"

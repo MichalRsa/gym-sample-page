@@ -31,27 +31,33 @@ export const members = [
       "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderitdipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
   },
 ];
+
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  teamSection: Pages["data"]["team_section"];
+}
+
+const { teamSection } = Astro.props;
+
+console.log(teamSection);
 ---
 
 <div id="team">
   <section
     class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
   >
-    <SectionHeader text="Meet our <br/> team" />
+    <SectionHeader text={teamSection.heading} />
     <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
-      Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
-      Goals.
+      {teamSection.sub_heading}
     </p>
 
     <div class="flex items-center justify-center gap-8 pt-10 max-lg:flex-col">
       {
-        members.map((member) => (
-          <TeamMemberCard
-            img={member.img}
-            name={member.name}
-            surname={member.surname}
-            role={member.roles[0]}
-          />
+        teamSection.team_list.map((member) => (
+          <TeamMemberCard member={member} />
         ))
       }
     </div>
