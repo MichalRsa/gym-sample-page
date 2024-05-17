@@ -2,93 +2,47 @@
 import OfferCard from "../components/OfferCard.astro";
 import DoubleChevron from "../assets/images/double-chevron.svg";
 import SectionHeader from "../components/SectionHeader.astro";
-import Powerlifting from "../assets/images/powerlifting.png";
-import Physiotherapy from "../assets/images/physiotherapy.png";
-import Physiotherapy2 from "../assets/images/physiotherapy2.png";
-import PersonalSession from "../assets/images/personal-session.png";
 import LinkButton from "./LinkButton.astro";
-
-interface Props {
-  withButton?: boolean;
-}
 
 const { withButton = false } = Astro.props;
 
-export const offer = [
-  {
-    img: Powerlifting,
-    name: "Get Stronger",
-    role: "Powerlifting",
-    link: "powerlifting",
-    width: "640",
-    height: "640",
-  },
-  {
-    img: Physiotherapy2,
-    name: "Get back in shape after injury",
-    role: "Physiotherapy",
-    link: "physiotherapy",
-    width: "640",
-    height: "350",
-  },
+import type { CollectionEntry } from "astro:content";
 
-  {
-    img: Physiotherapy,
-    name: "Fix the pain",
-    role: "Physiotherapy",
-    link: "physiotherapy",
-    width: "640",
-    height: "350",
-  },
-  {
-    img: PersonalSession,
-    name: "Lose weight",
-    role: "Personal session",
-    link: "personal-session",
-    width: "640",
-    height: "640",
-  },
-];
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  offer_section: Pages["data"]["offer_section"];
+  withButton?: boolean;
+}
+
+const { offer_section } = Astro.props;
 ---
 
 <div id="offer">
   <section
     class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
   >
-    <SectionHeader text="What are your <br/> goals?" />
+    <SectionHeader text={offer_section.heading} />
     <p class="mx-auto max-w-[510px] pt-5 text-xl lg:text-4xl">
-      Where Science Meets Sweat to Propel You Towards Your Ultimate Strength
-      Goals.
+      {offer_section.sub_heading}
     </p>
 
     <div class="grid gap-4 py-10 lg:grid-cols-2">
       <div class="grid gap-4">
         {
-          offer
+          offer_section.offer_list
             .slice(0, 2)
             .map((offerItem, index) => (
-              <OfferCard
-                link={offerItem.link}
-                index={index + 1}
-                img={offerItem.img}
-                name={offerItem.name}
-                role={offerItem.role}
-              />
+              <OfferCard offerItem={offerItem} index={index + 1} />
             ))
         }
       </div>
       <div class="grid gap-4">
         {
-          offer
+          offer_section.offer_list
             .slice(2)
             .map((offerItem, index) => (
-              <OfferCard
-                link={offerItem.link}
-                index={index}
-                img={offerItem.img}
-                name={offerItem.name}
-                role={offerItem.role}
-              />
+              <OfferCard offerItem={offerItem} index={index} />
             ))
         }
       </div>

@@ -5,45 +5,52 @@ import DoubleChevron from "../assets/images/double-chevron.svg";
 import LinkButton from "./LinkButton.astro";
 import type { ImageMetadata } from "astro";
 
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
 interface Props {
-  img: ImageMetadata;
-  name: string;
-  role: string;
+  offerItem: Pages["data"]["offer_section"]["offer_list"][0];
   index: number;
-  link: string;
 }
 
-const { img, name, role, index, link } = Astro.props;
+const { offerItem, index } = Astro.props;
 
 const type = index % 2;
 const dimenssion = {
   "0": "aspect-[640/350]",
   "1": "aspect-[1/1]",
 };
+
+const OfferImage = await import(`../../${offerItem.image}`);
 ---
 
 <offer-card>
-<article
-  class={`rounded-3xl overflow-hidden relative grid gap-4 ${dimenssion[type.toString()]}`}
->
-  <Image
-    data-image
-    src={img}
-    alt=""
-    class="saturate-50 transition-all h-full w-full object-cover object-bottom duration-500"
-  />
-  <div
-    class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent pb-4 pl-4 text-white sm:pb-7 sm:pl-7"
+  <article
+    class={`rounded-3xl overflow-hidden relative grid gap-4 ${dimenssion[type.toString()]}`}
   >
-    <p class="sm:text-lg">{role}</p>
-    <p class="font-archivo-black text-2xl font-black sm:pb-3 sm:text-5xl">
-      {name}
-    </p>
-    <div data-button-wrapper class="inline-block">
-      <LinkButton link={`/offer/${link}`} text="Learn More" img={DoubleChevron} />
+    <Image
+      data-image
+      src={OfferImage.default}
+      alt=""
+      class="h-full w-full object-cover object-bottom saturate-50 transition-all duration-500"
+    />
+    <div
+      class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent pb-4 pl-4 text-white sm:pb-7 sm:pl-7"
+    >
+      <p class="sm:text-lg">{offerItem.role}</p>
+      <p class="font-archivo-black text-2xl font-black sm:pb-3 sm:text-5xl">
+        {offerItem.name}
+      </p>
+      <div data-button-wrapper class="inline-block">
+        <LinkButton
+          link={`/offer/${offerItem.link}`}
+          text="Learn More"
+          img={DoubleChevron}
+        />
+      </div>
     </div>
-  </div>
-</article>
+  </article>
 </offer-card>
 
 <script>

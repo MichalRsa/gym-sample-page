@@ -45,4 +45,32 @@ known_clients:
         role: Proffesional boxer
         record: 24-0-1
         avatar: src/assets/images/client.png
+offer_section:
+  offer_list:
+    - name: Get Stronger
+      role: Powerlifting
+      link: powerlifting
+      width: 640
+      height: 640
+      image: src/assets/images/powerlifting.png
+    - name: Get back in shape after injury
+      role: Physiotherapy
+      link: physiotherapy
+      width: 640
+      height: 640
+      image: src/assets/images/physiotherapy2.png
+    - name: Fix the pain
+      role: Physiotherapy
+      link: physiotherapy
+      width: 640
+      height: 640
+      image: src/assets/images/physiotherapy.png
+    - name: Lose weight
+      role: Personal session
+      link: personal-session
+      width: 640
+      height: 640
+      image: src/assets/images/personal-session.png
+  heading: What are your <br/> goals?
+  sub_heading: Where Science Meets Sweat to Propel You Towards Your Ultimate Strength Goals.
 ---

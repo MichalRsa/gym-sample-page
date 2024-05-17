@@ -69,3 +69,18 @@ collections:
                     - {label: Role, name: role, widget: string, default: "Proffesional boxer"}
                     - {label: Record, name: record, widget: string, default: "24-0-1"}
                     - {label: Avatar, name: avatar, widget: image, default: "src/assets/images/client.png"}
+        - label: Offer Section
+          name: offer_section 
+          widget: object
+          fields: 
+            - {label: "heading", name: "heading", widget: "string"}
+            - {label: "Sub Heading", name: "sub_heading", widget: "string"}
+            - label: Offer List
+              name: offer_list
+              widget: list
+              summary: '{{fields.review}} - {{fields.author.name}}'
+              fields:
+                - {label: Name, name: name, widget: string, default: "Get Stronger"}
+                - {label: Role, name: role, widget: string, default: "Powerlifting"}
+                - {label: Link, name: link, widget: string, default: "powerlifting"}
+                - {label: Image, name: image, widget: image, default: "src/assets/images/powerlifting.png"}

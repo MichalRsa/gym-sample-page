@@ -13,7 +13,7 @@ import { getEntry } from "astro:content";
 
 const { data } = await getEntry("pages", "home_page");
 
-const { hero, testimonials, known_clients } = data;
+const { hero, testimonials, known_clients, offer_section } = data;
 ---
 
 <Layout title="Welcome to Astro.">
@@ -23,7 +23,7 @@ const { hero, testimonials, known_clients } = data;
     <Spacer />
     <KnownClientsSection known_clients={known_clients} />
     <Spacer type="secondary" />
-    <OfferSection withButton />
+    <OfferSection withButton offer_section={offer_section} />
     <Spacer />
     <TeamSection />
     <Spacer type="secondary" />
