@@ -50,4 +50,22 @@ collections:
                   fields:
                     - {label: Name, name: name, widget: string, default: "Emmet"}
                     - {label: Role, name: role, widget: string, default: "Customer"}
-                    - {label: Avatar, name: avatar, widget: image, default: "../../src/assets/images/customer.png"}
+                    - {label: Avatar, name: avatar, widget: image, default: "src/assets/images/customer.png"}
+        - label: Known Clients
+          name: known_clients
+          widget: object
+          fields: 
+            - {label: "heading", name: "heading", widget: "string"}
+            - label: Clients List
+              name: clients_list
+              widget: list
+              summary: '{{fields.review}} - {{fields.author.name}}'
+              fields:
+                - label: Client
+                  name: client
+                  widget: object
+                  fields:
+                    - {label: Name, name: name, widget: string, default: "Mark Puncher"}
+                    - {label: Role, name: role, widget: string, default: "Proffesional boxer"}
+                    - {label: Record, name: record, widget: string, default: "24-0-1"}
+                    - {label: Avatar, name: avatar, widget: image, default: "src/assets/images/client.png"}

@@ -26,12 +26,7 @@ const { testimonials } = Astro.props;
     >
       {
         testimonials.testimonials.map((testimonial) => (
-          <TestimonialCard
-            name={testimonial.author.name}
-            role={testimonial.author.role}
-            avatar={testimonial.author.avatar}
-            review={testimonial.review}
-          />
+          <TestimonialCard testimonial={testimonial} />
         ))
       }
     </div>

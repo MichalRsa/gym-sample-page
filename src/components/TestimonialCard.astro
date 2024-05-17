@@ -1,26 +1,37 @@
 ---
 import { Image } from "astro:assets";
-import Customer from "../assets/images/customer.png";
 
-const { name, role, review } = Astro.props;
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  testimonial: Pages["data"]["testimonials"]["testimonials"][0];
+}
+
+const { testimonial } = Astro.props;
+
+const Customer = await import(`../../${testimonial.author.avatar}`);
 ---
 
 <article class="min-w-56 max-w-80 max-sm:w-9/12">
   <div class="flex flex-row items-center pb-6">
     <Image
-      src={Customer}
+      src={Customer.default}
       alt=""
       widths={[80, 120]}
       sizes={`(max-width: 1024px) 80px, 120px`}
     />
     <div class="pl-3">
-      <p class="font-archivo-black text-xl font-black lg:text-2xl">{name}</p>
-      <p class="text-sm lg:text-base">{role}</p>
+      <p class="font-archivo-black text-xl font-black lg:text-2xl">
+        {testimonial.author.name}
+      </p>
+      <p class="text-sm lg:text-base">{testimonial.author.role}</p>
     </div>
   </div>
   <p class="text-base italic lg:text-xl">
     <span>"</span>
-    {review}
+    {testimonial.review}
     <span>"</span>
   </p>
 </article>

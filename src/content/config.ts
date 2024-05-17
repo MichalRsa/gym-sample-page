@@ -20,6 +20,19 @@ const HomePage = {
       }),
     ),
   }),
+  known_clients: z.object({
+    heading: z.string(),
+    clients_list: z.array(
+      z.object({
+        client: z.object({
+          name: z.string(),
+          role: z.string(),
+          record: z.string(),
+          avatar: z.string(),
+        }),
+      }),
+    ),
+  }),
 };
 
 // 2. Define a `type` and `schema` for each collection

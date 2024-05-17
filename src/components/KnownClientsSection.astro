@@ -2,43 +2,29 @@
 import KnownClientCard from "../components/KnownClientCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const clients = [
-  {
-    name: "Mark <br/> Puncher",
-    role: "Proffesional boxer",
-    record: "24-0-1",
-  },
-  {
-    name: "Mark <br/> Puncher",
-    role: "Proffesional boxer",
-    record: "24-0-1",
-  },
-  {
-    name: "Mark <br/> Puncher",
-    role: "Proffesional boxer",
-    record: "24-0-1",
-  },
-];
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  known_clients: Pages["data"]["known_clients"];
+}
+
+const { known_clients } = Astro.props;
 ---
 
-<div 
-  id="our-clients"
+<div id="our-clients">
+  <section
+    class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
   >
-<section
-  class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
->
-  <SectionHeader text="We work <br/> with" />
+    <SectionHeader text="We work <br/> with" />
 
-  <div class="flex items-center justify-center gap-8 pt-10 max-lg:flex-col">
-    {
-      clients.map((testimonial) => (
-        <KnownClientCard
-          name={testimonial.name}
-          role={testimonial.role}
-          record={testimonial.record}
-        />
-      ))
-    }
-  </div>
-</section>
+    <div class="flex items-center justify-center gap-8 pt-10 max-lg:flex-col">
+      {
+        known_clients.clients_list.map((client) => (
+          <KnownClientCard client={client} />
+        ))
+      }
+    </div>
+  </section>
 </div>
