@@ -12,9 +12,6 @@ interface Props {
 
 const { member } = Astro.props;
 
-const MemberImage = await import(`../../${member.image}`);
-
-console.log(member.role)
 ---
 
 <team-member-card>
@@ -22,7 +19,7 @@ console.log(member.role)
     <Image
       data-image
       class="saturate-0 transition-all duration-500"
-      src={MemberImage.default}
+      src={member.image}
       alt=""
       transition:name={`${member.name}_${member.surname}`}
     />

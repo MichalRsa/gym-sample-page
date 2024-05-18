@@ -21,8 +21,6 @@ const dimenssion = {
   "0": "aspect-[640/350]",
   "1": "aspect-[1/1]",
 };
-
-const OfferImage = await import(`../../${offerItem.image}`);
 ---
 
 <offer-card>
@@ -31,7 +29,7 @@ const OfferImage = await import(`../../${offerItem.image}`);
   >
     <Image
       data-image
-      src={OfferImage.default}
+      src={offerItem.image}
       alt=""
       class="h-full w-full object-cover object-bottom saturate-50 transition-all duration-500"
     />

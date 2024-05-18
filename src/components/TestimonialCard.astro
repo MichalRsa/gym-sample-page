@@ -11,13 +11,12 @@ interface Props {
 
 const { testimonial } = Astro.props;
 
-const Customer = await import(`../../${testimonial.author.avatar}`);
 ---
 
 <article class="min-w-56 max-w-80 max-sm:w-9/12">
   <div class="flex flex-row items-center pb-6">
     <Image
-      src={Customer.default}
+      src={testimonial.author.avatar}
       alt=""
       widths={[80, 120]}
       sizes={`(max-width: 1024px) 80px, 120px`}

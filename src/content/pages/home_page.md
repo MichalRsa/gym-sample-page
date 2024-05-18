@@ -110,7 +110,7 @@ team_section:
         officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt
         velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur
         et est culpa et culpa duis.
-      image: src/assets/images/team-member-colored.png
+      image: src/assets/images/coach3-colored.png
     - name: Brent
       surname: Surname
       role:
@@ -128,7 +128,7 @@ team_section:
         officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt
         velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur
         et est culpa et culpa duis.
-      image: src/assets/images/team-member-colored.png
+      image: src/assets/images/coach2-colored.png
   heading: Meet our team
   sub_heading: Where Science Meets Sweat to Propel You Towards Your Ultimate Strength Goals.
 ---

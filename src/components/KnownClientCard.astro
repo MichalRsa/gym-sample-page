@@ -10,14 +10,15 @@ interface Props {
 }
 
 const { client } = Astro.props;
-
-const Client = await import(`../../${client.client.avatar}`);
 ---
 
 <div class="relative">
-  <Image src={Client.default} alt="" class="" />
+  <Image src={client.client.avatar} alt="" class="" />
   <article class="absolute bottom-0 left-0 pb-8 pl-8 lg:pb-12 lg:pl-12">
-    <p class="mb-2 text-3xl text-white lg:text-5xl" set:html={client.client.name} />
+    <p
+      class="mb-2 text-3xl text-white lg:text-5xl"
+      set:html={client.client.name}
+    />
     <p
       class="mb-2 inline-block rounded-3xl bg-yellow-300 px-8 text-base lg:text-xl"
     >
