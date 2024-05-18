@@ -1,103 +1,198 @@
 local_backend: true
-  
+
 media_folder: "src/assets/images" # Location where files will be stored in the repo
 public_folder: "src/assets/images" # The src attribute for uploaded media
-  
+
 backend:
- name: git-gateway
- branch: decap-cms # Branch to update (optional; defaults to master)
-   
+  name: git-gateway
+  branch: decap-cms # Branch to update (optional; defaults to master)
+
 collections:
   - name: "pages"
     label: "Pages"
     files:
-     - name: "home"
-       label: "Home"
-       file: "src/content/pages/home_page.md"
-       fields:
-        - label: Hero
-          name: hero
-          widget: object
-          fields: 
-            - {label: "Hero Image", name: "hero_img", widget: "image"}
-            - {label: "Heading", name: "heading", widget: "string"}
-            - {label: "Sub Heading", name: "sub_heading", widget: "string"}
-        - label: Testimonials
-          name: testimonials
-          widget: object
-          fields: 
-            - {label: "heading", name: "heading", widget: "string"}
-            - label: Testimonials
-              name: testimonials
-              widget: list
-              summary: '{{fields.review}} - {{fields.author.name}}'
-              fields:
-                - {label: Review , name: review, widget: string, default: "Everything is awesome!"}
-                - label: Author
-                  name: author
-                  widget: object
-                  fields:
-                    - {label: Name, name: name, widget: string, default: "Emmet"}
-                    - {label: Role, name: role, widget: string, default: "Customer"}
-                    - {label: Avatar, name: avatar, widget: image, default: "src/assets/images/customer.png"}
-        - label: Known Clients
-          name: known_clients
-          widget: object
-          fields: 
-            - {label: "heading", name: "heading", widget: "string"}
-            - label: Clients List
-              name: clients_list
-              widget: list
-              summary: '{{fields.review}} - {{fields.author.name}}'
-              fields:
-                - label: Client
-                  name: client
-                  widget: object
-                  fields:
-                    - {label: Name, name: name, widget: string, default: "Mark Puncher"}
-                    - {label: Role, name: role, widget: string, default: "Proffesional boxer"}
-                    - {label: Record, name: record, widget: string, default: "24-0-1"}
-                    - {label: Avatar, name: avatar, widget: image, default: "src/assets/images/client.png"}
-        - label: Offer Section
-          name: offer_section 
-          widget: object
-          fields: 
-            - {label: "heading", name: "heading", widget: "string"}
-            - {label: "Sub Heading", name: "sub_heading", widget: "string"}
-            - label: Offer List
-              name: offer_list
-              widget: list
-              summary: '{{fields.review}} - {{fields.author.name}}'
-              fields:
-                - {label: Name, name: name, widget: string, default: "Get Stronger"}
-                - {label: Role, name: role, widget: string, default: "Powerlifting"}
-                - {label: Link, name: link, widget: string, default: "powerlifting"}
-                - {label: Image, name: image, widget: image, default: "src/assets/images/powerlifting.png"}
-        - label: Team Section
-          name: team_section 
-          widget: object
-          fields: 
-            - {label: "heading", name: "heading", widget: "string"}
-            - {label: "Sub Heading", name: "sub_heading", widget: "string"}
-            - label: Team List
-              name: team_list
-              widget: list
-              summary: '{{fields.review}} - {{fields.author.name}}'
-              fields:
-                - {label: Name, name: name, widget: string, default: "Brent"}
-                - {label: Surname, name: surname, widget: string, default: "Surname"}
-                - {label: Role, name: role, widget: list, default: ["Boxing", "Powerlifting", "CrossFit"]}
-                - {label: Description, name: description, widget: string, default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."}
-                - {label: Image, name: image, widget: image, default: "src/assets/images/team-member-colored.png"}
-        - label: FAQ Section
-          name: faq_section 
-          widget: object
-          fields: 
-            - {label: "heading", name: "heading", widget: "string"}
-            - label: FAQ List
-              name: faq_list
-              widget: list
-              summary: '{{fields.review}} - {{fields.author.name}}'
-              fields:
-                - {label: Question, name: question, widget: string, default: "Some very important question"}
-                - {label: Answer, name: answer, widget: string, default: "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius."}
+      - name: "home"
+        label: "Home"
+        file: "src/content/pages/home_page.md"
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: "Hero Image", name: "hero_img", widget: "image" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Sub Heading", name: "sub_heading", widget: "string" }
+          - label: Testimonials
+            name: testimonials
+            widget: object
+            fields:
+              - { label: heading", name: "heading", widget: "string" }
+              - label: Testimonials
+                name: testimonials
+                widget: list
+                summary: "{{fields.review}} - {{fields.author.name}}"
+                fields:
+                  - {
+                      label: Review,
+                      name: review,
+                      widget: string,
+                      default: "Everything is awesome!",
+                    }
+                  - label: Author
+                    name: author
+                    widget: object
+                    fields:
+                      - {
+                          label: Name,
+                          name: name,
+                          widget: string,
+                          default: "Emmet",
+                        }
+                      - {
+                          label: Role,
+                          name: role,
+                          widget: string,
+                          default: "Customer",
+                        }
+                      - {
+                          label: Avatar,
+                          name: avatar,
+                          widget: image,
+                          default: "src/assets/images/customer.png",
+                        }
+          - label: Known Clients
+            name: known_clients
+            widget: object
+            fields:
+              - { label: "heading", name: "heading", widget: "string" }
+              - label: Clients List
+                name: clients_list
+                widget: list
+                summary: "{{fields.review}} - {{fields.author.name}}"
+                fields:
+                  - label: Client
+                    name: client
+                    widget: object
+                    fields:
+                      - {
+                          label: Name,
+                          name: name,
+                          widget: string,
+                          default: "Mark Puncher",
+                        }
+                      - {
+                          label: Role,
+                          name: role,
+                          widget: string,
+                          default: "Proffesional boxer",
+                        }
+                      - {
+                          label: Record,
+                          name: record,
+                          widget: string,
+                          default: "24-0-1",
+                        }
+                      - {
+                          label: Avatar,
+                          name: avatar,
+                          widget: image,
+                          default: "src/assets/images/client.png",
+                        }
+          - label: Offer Section
+            name: offer_section
+            widget: object
+            fields:
+              - { label: "heading", name: "heading", widget: "string" }
+              - { label: "Sub Heading", name: "sub_heading", widget: "string" }
+              - label: Offer List
+                name: offer_list
+                widget: list
+                summary: "{{fields.review}} - {{fields.author.name}}"
+                fields:
+                  - {
+                      label: Name,
+                      name: name,
+                      widget: string,
+                      default: "Get Stronger",
+                    }
+                  - {
+                      label: Role,
+                      name: role,
+                      widget: string,
+                      default: "Powerlifting",
+                    }
+                  - {
+                      label: Link,
+                      name: link,
+                      widget: string,
+                      default: "powerlifting",
+                    }
+                  - {
+                      label: Image,
+                      name: image,
+                      widget: image,
+                      default: "src/assets/images/powerlifting.png",
+                    }
+          - label: Team Section
+            name: team_section
+            widget: object
+            fields:
+              - { label: "heading", name: "heading", widget: "string" }
+              - { label: "Sub Heading", name: "sub_heading", widget: "string" }
+              - label: Team List
+                name: team_list
+                widget: list
+                summary: "{{fields.review}} - {{fields.author.name}}"
+                fields:
+                  - {
+                      label: Name,
+                      name: name,
+                      widget: string,
+                      default: "Brent",
+                    }
+                  - {
+                      label: Surname,
+                      name: surname,
+                      widget: string,
+                      default: "Surname",
+                    }
+                  - {
+                      label: Role,
+                      name: role,
+                      widget: list,
+                      default: ["Boxing", "Powerlifting", "CrossFit"],
+                    }
+                  - {
+                      label: Description,
+                      name: description,
+                      widget: string,
+                      default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+                    }
+                  - {
+                      label: Image,
+                      name: image,
+                      widget: image,
+                      default: "src/assets/images/team-member-colored.png",
+                    }
+          - label: FAQ Section
+            name: faq_section
+            widget: object
+            fields:
+              - { label: "heading", name: "heading", widget: "string" }
+              - label: FAQ List
+                name: faq_list
+                widget: list
+                summary: "{{fields.review}} - {{fields.author.name}}"
+                fields:
+                  - {
+                      label: Question,
+                      name: question,
+                      widget: string,
+                      default: "Some very important question",
+                    }
+                  - {
+                      label: Answer,
+                      name: answer,
+                      widget: string,
+                      default: "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
+                    }
