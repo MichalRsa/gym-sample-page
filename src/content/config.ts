@@ -59,6 +59,15 @@ const HomePage = (image: ImageFunction) => {
         }),
       ),
     }),
+    faq_section: z.object({
+      heading: z.string(),
+      faq_list: z.array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        }),
+      ),
+    }),
   };
 };
 

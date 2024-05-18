@@ -1,44 +1,25 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import FaqCard from "../components/FaqCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const questions = [
-  {
-    question: "Some very important question",
-    answer:
-      "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
-  },
-  {
-    question: "Some very important question",
-    answer:
-      "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
-  },
-  {
-    question: "Some very important question",
-    answer:
-      "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
-  },
-  {
-    question: "Some very important question",
-    answer:
-      "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
-  },
-  {
-    question: "Some very important question",
-    answer:
-      "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
-  },
-];
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  faqSection: Pages["data"]["faq_section"];
+}
+
+const { faqSection } = Astro.props;
 ---
 
 <section
   class:list={["animationHidden animationBottom", "container mx-auto py-16"]}
 >
-  <SectionHeader text="Frequently asked <br/> question" />
+  <SectionHeader text={faqSection.heading} />
   <div class="pt-10">
     {
-      questions.map((question) => (
-        <FaqCard question={question.question} answer={question.answer} />
+      faqSection.faq_list.map((faqItem) => (
+        <FaqCard faqItem={faqItem} />
       ))
     }
   </div>

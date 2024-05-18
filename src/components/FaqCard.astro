@@ -1,16 +1,27 @@
 ---
-const props = Astro.props;
+import type { CollectionEntry } from "astro:content";
+
+type Pages = CollectionEntry<"pages">;
+
+interface Props {
+  faqItem: Pages["data"]["faq_section"]["faq_list"][0];
+}
+
+const { faqItem } = Astro.props;
 ---
 
 <faq-card>
   <div
-    class:list={["animationHidden animationLeft","shadow-lg shadow-gray-100 focus-within:ring-yellow-500 hover:bg-yellow-100 mb-8 rounded-xl border-4 border-yellow-300 focus-within:ring"]}
+    class:list={[
+      "animationHidden animationLeft",
+      "mb-8 rounded-xl border-4 border-yellow-300 shadow-lg shadow-gray-100 focus-within:ring focus-within:ring-yellow-500 hover:bg-yellow-100",
+    ]}
   >
     <button
       data-faq-button
-      class="flex w-full items-center justify-between p-2 focus:outline-none md:p-4 text-xl lg:text-2xl"
+      class="flex w-full items-center justify-between p-2 text-xl focus:outline-none md:p-4 lg:text-2xl"
     >
-      <span class="text-left">{props.question}</span>
+      <span class="text-left">{faqItem.question}</span>
       <div class="h-6 min-w-[24px] flex-grow-0 transition-all">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -23,7 +34,7 @@ const props = Astro.props;
     </button>
     <div data-faq-accordion class="grid transition-all">
       <div class="overflow-hidden">
-        <p class="p-4 text-xl">{props.answer}</p>
+        <p class="p-4 text-xl">{faqItem.answer}</p>
       </div>
     </div>
   </div>

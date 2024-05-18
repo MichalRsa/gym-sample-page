@@ -131,4 +131,39 @@ team_section:
       image: src/assets/images/coach2-colored.png
   heading: Meet our team
   sub_heading: Where Science Meets Sweat to Propel You Towards Your Ultimate Strength Goals.
+faq_section:
+  heading: Frequently asked <br/> question
+  faq_list:
+    - question: Some very important question
+      answer: Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit
+        mauris posuere et. In pellentesque felis non ante pulvinar, in tempus
+        enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum
+        lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis
+        vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu,
+        fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper
+        varius.
+    - question: Some very important question
+      answer: Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit
+        mauris posuere et. In pellentesque felis non ante pulvinar, in tempus
+        enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum
+        lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis
+        vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu,
+        fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper
+        varius.
+    - question: Some very important question
+      answer: Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit
+        mauris posuere et. In pellentesque felis non ante pulvinar, in tempus
+        enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum
+        lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis
+        vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu,
+        fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper
+        varius.
+    - question: Some very important question
+      answer: Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit
+        mauris posuere et. In pellentesque felis non ante pulvinar, in tempus
+        enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum
+        lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis
+        vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu,
+        fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper
+        varius.
 ---

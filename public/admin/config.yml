@@ -100,3 +100,15 @@ collections:
                 - {label: Role, name: role, widget: list, default: ["Boxing", "Powerlifting", "CrossFit"]}
                 - {label: Description, name: description, widget: string, default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."}
                 - {label: Image, name: image, widget: image, default: "src/assets/images/team-member-colored.png"}
+        - label: FAQ Section
+          name: faq_section 
+          widget: object
+          fields: 
+            - {label: "heading", name: "heading", widget: "string"}
+            - label: FAQ List
+              name: faq_list
+              widget: list
+              summary: '{{fields.review}} - {{fields.author.name}}'
+              fields:
+                - {label: Question, name: question, widget: string, default: "Some very important question"}
+                - {label: Answer, name: answer, widget: string, default: "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius."}
