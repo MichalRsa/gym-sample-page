@@ -10,6 +10,14 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+    <script src="https://unpkg.com/netlify-cms-widget-uuid-v4@^1.0.12/dist/index.js"></script>
+    <script type="text/javascript">
+      CMS.registerWidget(
+        "uuid",
+        uuidWidget.UuidControl,
+        uuidWidget.UuidPreview,
+      );
+    </script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {

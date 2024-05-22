@@ -4,14 +4,13 @@ import DoubleChevron from "../assets/images/double-chevron.svg";
 import LinkButton from "./LinkButton.astro";
 import type { CollectionEntry } from "astro:content";
 
-type Pages = CollectionEntry<"pages">;
+type Data = CollectionEntry<"data">;
 
 interface Props {
-  member: Pages["data"]["team_section"]["team_list"][0];
+  member: Data["data"]["team_list"][0];
 }
 
 const { member } = Astro.props;
-
 ---
 
 <team-member-card>

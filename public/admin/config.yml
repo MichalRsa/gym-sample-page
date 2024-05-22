@@ -139,41 +139,51 @@ collections:
             fields:
               - { label: "heading", name: "heading", widget: "string" }
               - { label: "Sub Heading", name: "sub_heading", widget: "string" }
-              - label: Team List
-                name: team_list
-                widget: list
-                summary: "{{fields.review}} - {{fields.author.name}}"
-                fields:
-                  - {
-                      label: Name,
-                      name: name,
-                      widget: string,
-                      default: "Brent",
-                    }
-                  - {
-                      label: Surname,
-                      name: surname,
-                      widget: string,
-                      default: "Surname",
-                    }
-                  - {
-                      label: Role,
-                      name: role,
-                      widget: list,
-                      default: ["Boxing", "Powerlifting", "CrossFit"],
-                    }
-                  - {
-                      label: Description,
-                      name: description,
-                      widget: string,
-                      default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
-                    }
-                  - {
-                      label: Image,
-                      name: image,
-                      widget: image,
-                      default: "src/assets/images/team-member-colored.png",
-                    }
+              - label: "Team List"
+                name: "team_list"
+                widget: relation
+                collection: team_members
+                multiple: true
+                file: team
+                search_fields: ["team_list.*.name", "team_list.*.surname", "team_list.*.id"]
+                value_field: "team_list.*.id"
+                display_fields: ["team_list.*.name", "team_list.*.surname"]
+            # fields:
+            #   - label: Team List
+            #     name: team_list
+            #     widget: list
+            #     summary: "{{fields.review}} - {{fields.author.name}}"
+            #     fields:
+            #       - {
+            #           label: Name,
+            #           name: name,
+            #           widget: string,
+            #           default: "Brent",
+            #         }
+            #       - {
+            #           label: Surname,
+            #           name: surname,
+            #           widget: string,
+            #           default: "Surname",
+            #         }
+            #       - {
+            #           label: Role,
+            #           name: role,
+            #           widget: list,
+            #           default: ["Boxing", "Powerlifting", "CrossFit"],
+            #         }
+            #       - {
+            #           label: Description,
+            #           name: description,
+            #           widget: string,
+            #           default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+            #         }
+            #       - {
+            #           label: Image,
+            #           name: image,
+            #           widget: image,
+            #           default: "src/assets/images/team-member-colored.png",
+            #         }
           - label: FAQ Section
             name: faq_section
             widget: object
@@ -196,3 +206,73 @@ collections:
                       widget: string,
                       default: "Duis vitae dignissim eros. Fusce rhoncus congue dui, iaculis suscipit mauris posuere et. In pellentesque felis non ante pulvinar, in tempus enim imperdiet. Curabitur nec ultricies nisl. Vestibulum at condimentum lorem, sit amet semper dui. Donec risus lacus, faucibus vitae convallis vitae, laoreet quis magna. Nulla leo lectus, mattis ut semper eu, fringilla at nisl. Duis eleifend nisi orci, sed euismod nisi ullamcorper varius.",
                     }
+  - name: team_members
+    label: Team Members
+    files:
+      - label: Team
+        name: team
+        file: "src/content/data/team_page.md"
+        summary: "{{fields.review}} - {{fields.author.name}}"
+        fields:
+          - {
+              label: Question,
+              name: question,
+              widget: string,
+              default: "Some very important question",
+            }
+          - label: Team List
+            name: team_list
+            widget: list
+            fields:
+              - {label: "ID", name: "id", widget: "uuid"}
+              - { label: Name, name: name, widget: string, default: "Brent" }
+              - {
+                  label: Surname,
+                  name: surname,
+                  widget: string,
+                  default: "Surname",
+                }
+              - {
+                  label: Role,
+                  name: role,
+                  widget: list,
+                  default: ["Boxing", "Powerlifting", "CrossFit"],
+                }
+              - {
+                  label: Description,
+                  name: description,
+                  widget: string,
+                  default: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+                }
+              - {
+                  label: Image,
+                  name: image,
+                  widget: image,
+                  default: "src/assets/images/team-member-colored.png",
+                }
+              - label: Socials
+                name: socials
+                widget: list
+                default:
+                  - link: "https://www.instagram.com/"
+                    alt: "Instagram icon"
+                    icon: "src/assets/images/instagram-icon.png"
+                  - link: "https://www.linkedin.com/"
+                    alt: "LinedIn icon"
+                    icon: "src/assets/images/linkedin-icon.png"
+                  - link: "https://www.facebook.com/"
+                    alt: "Facebook icon"
+                    icon: "src/assets/images/facebook-icon.png"
+                fields:
+                  - label: Icon
+                    name: icon
+                    widget: image
+                    default: "src/assets/images/instagram-icon.png"
+                  - label: Link
+                    name: link
+                    widget: string
+                    default: "https://www.instagram.com/"
+                  - label: Alt
+                    name: alt
+                    widget: string
+                    default: "Instagram Icon"

@@ -49,15 +49,7 @@ const HomePage = (image: ImageFunction) => {
     team_section: z.object({
       heading: z.string(),
       sub_heading: z.string(),
-      team_list: z.array(
-        z.object({
-          name: z.string(),
-          surname: z.string(),
-          role: z.array(z.string()),
-          description: z.string(),
-          image: image(),
-        }),
-      ),
+      team_list: z.array(z.string()),
     }),
     faq_section: z.object({
       heading: z.string(),
@@ -71,13 +63,34 @@ const HomePage = (image: ImageFunction) => {
   };
 };
 
+const TeamMembers = (image: ImageFunction) => {
+  return {
+    team_list: z.array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+        surname: z.string(),
+        role: z.array(z.string()),
+        description: z.string(),
+        image: image(),
+      }),
+    ),
+  };
+};
+
 // 2. Define a `type` and `schema` for each collection
 const pages = defineCollection({
   type: "content", // v2.5.0 and later
   schema: ({ image }) => z.object(HomePage(image)),
 });
 
+const data = defineCollection({
+  type: "content", // v2.5.0 and later
+  schema: ({ image }) => z.object(TeamMembers(image)),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   pages,
+  data,
 };

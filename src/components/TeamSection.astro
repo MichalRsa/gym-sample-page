@@ -1,9 +1,11 @@
 ---
 import TeamMemberCard from "../components/TeamMemberCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-import type { CollectionEntry } from "astro:content";
+import { getEntry, type CollectionEntry } from "astro:content";
 
 type Pages = CollectionEntry<"pages">;
+
+const { data: teamData } = await getEntry("data", "team_page");
 
 interface Props {
   teamSection: Pages["data"]["team_section"];
@@ -11,6 +13,12 @@ interface Props {
 
 const { teamSection } = Astro.props;
 
+const populatedTeamSection = {
+  ...teamSection,
+  team_list: teamSection.team_list.map((id) =>
+    teamData.team_list.find((member) => member.id === id),
+  ),
+};
 ---
 
 <div id="team">
@@ -24,9 +32,9 @@ const { teamSection } = Astro.props;
 
     <div class="flex items-center justify-center gap-8 pt-10 max-lg:flex-col">
       {
-        teamSection.team_list.map((member) => (
-          <TeamMemberCard member={member} />
-        ))
+        populatedTeamSection.team_list.map(
+          (member) => member && <TeamMemberCard member={member} />,
+        )
       }
     </div>
   </section>
