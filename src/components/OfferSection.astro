@@ -3,12 +3,14 @@ import OfferCard from "../components/OfferCard.astro";
 import DoubleChevron from "../assets/images/double-chevron.svg";
 import SectionHeader from "../components/SectionHeader.astro";
 import LinkButton from "./LinkButton.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
 
 const { withButton = false } = Astro.props;
 
-import type { CollectionEntry } from "astro:content";
-
 type Pages = CollectionEntry<"pages">;
+
+const { data } = await getEntry("offer", "offer");
 
 interface Props {
   offer_section: Pages["data"]["offer_section"];
@@ -16,6 +18,13 @@ interface Props {
 }
 
 const { offer_section } = Astro.props;
+
+const populatedOfferSection = {
+  ...offer_section,
+  offer_list: offer_section.offer_list.map((id) =>
+    data.offer_list.find((member) => member.id === id),
+  ),
+};
 ---
 
 <div id="offer">
@@ -30,20 +39,24 @@ const { offer_section } = Astro.props;
     <div class="grid gap-4 py-10 lg:grid-cols-2">
       <div class="grid gap-4">
         {
-          offer_section.offer_list
+          populatedOfferSection.offer_list
             .slice(0, 2)
-            .map((offerItem, index) => (
-              <OfferCard offerItem={offerItem} index={index + 1} />
-            ))
+            .map(
+              (offerItem, index) =>
+                offerItem && (
+                  <OfferCard offerItem={offerItem} index={index + 1} />
+                ),
+            )
         }
       </div>
       <div class="grid gap-4">
         {
-          offer_section.offer_list
+          populatedOfferSection.offer_list
             .slice(2)
-            .map((offerItem, index) => (
-              <OfferCard offerItem={offerItem} index={index} />
-            ))
+            .map(
+              (offerItem, index) =>
+                offerItem && <OfferCard offerItem={offerItem} index={index} />,
+            )
         }
       </div>
     </div>

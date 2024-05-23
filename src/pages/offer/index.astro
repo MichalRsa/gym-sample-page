@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import OfferCard from "../../components/OfferCard.astro";
-import { offer } from "../../components/OfferSection.astro";
+import { getEntry } from "astro:content";
+
+const { data } = await getEntry("offer", "offer");
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,27 +13,15 @@ import { offer } from "../../components/OfferSection.astro";
     <div class="grid gap-4 py-10 lg:grid-cols-2">
       <div class="grid gap-4">
         {
-          offer.map((offerItem, index) => (
-            <OfferCard
-              link={offerItem.link}
-              index={index + 1}
-              img={offerItem.img}
-              name={offerItem.name}
-              role={offerItem.role}
-            />
+          data.offer_list.map((offerItem, index) => (
+            <OfferCard offerItem={offerItem} index={index + 1} />
           ))
         }
       </div>
       <div class="grid gap-4">
         {
-          offer.map((offerItem, index) => (
-            <OfferCard
-              link={offerItem.link}
-              index={index}
-              img={offerItem.img}
-              name={offerItem.name}
-              role={offerItem.role}
-            />
+          data.offer_list.map((offerItem, index) => (
+            <OfferCard offerItem={offerItem} index={index} />
           ))
         }
       </div>

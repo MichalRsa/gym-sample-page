@@ -7,10 +7,10 @@ import type { ImageMetadata } from "astro";
 
 import type { CollectionEntry } from "astro:content";
 
-type Pages = CollectionEntry<"pages">;
+type Offer = CollectionEntry<"offer">;
 
 interface Props {
-  offerItem: Pages["data"]["offer_section"]["offer_list"][0];
+  offerItem: Offer["data"]["offer_list"][0];
   index: number;
 }
 

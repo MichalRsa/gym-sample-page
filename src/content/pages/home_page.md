@@ -47,30 +47,10 @@ known_clients:
         avatar: src/assets/images/client.png
 offer_section:
   offer_list:
-    - name: Get Stronger
-      role: Powerlifting
-      link: powerlifting
-      width: 640
-      height: 640
-      image: src/assets/images/powerlifting.png
-    - name: Get back in shape after injury
-      role: Physiotherapy
-      link: physiotherapy
-      width: 640
-      height: 640
-      image: src/assets/images/physiotherapy2.png
-    - name: Fix the pain
-      role: Physiotherapy
-      link: physiotherapy
-      width: 640
-      height: 640
-      image: src/assets/images/physiotherapy.png
-    - name: Lose weight
-      role: Personal session
-      link: personal-session
-      width: 640
-      height: 640
-      image: src/assets/images/personal-session.png
+    - 231359d4-20fe-4c09-b055-29bf1c27989a
+    - ebf43165-043e-42e5-9999-da47870bcb71
+    - 8d881f10-1e20-4ed5-b6bd-3a30cf99e572
+    - 4c11dd95-0e39-4800-961b-4d20b885aea2
   heading: What are your <br/> goals?
   sub_heading: Where Science Meets Sweat to Propel You Towards Your Ultimate Strength Goals.
 team_section:
