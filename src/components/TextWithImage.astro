@@ -5,7 +5,7 @@ import type { ImageMetadata } from "astro";
 interface Props {
   img: ImageMetadata;
   text: string;
-  type: string;
+  type?: string;
 }
 
 const { img, text, type } = Astro.props;
