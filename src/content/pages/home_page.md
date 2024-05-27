@@ -25,7 +25,7 @@ testimonials:
       author:
         name: Emmet
         role: Customer
-        avatar: src/assets/images/coach3.png
+        avatar: src/assets/images/customer.png
   heading: Good words <br/> about us
 known_clients:
   heading: We work <br/> with
